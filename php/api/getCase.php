@@ -3,19 +3,34 @@
     include "conn.php";
 
     if(!empty($_POST)){
-        $difficulty= $_POST['difficulty'];
-        $cat= $_POST['cat'];
-        $sub= $_POST['sub'];
-        $type= $_POST['type'];
+
+        if(isset($_POST['difficulty'])){
+            $difficulty= $_POST['difficulty'];
+        }
+
+        if(isset($_POST['cat'])){
+
+            $cat= $_POST['cat'];
+        }
+        if(isset($_POST['sub'])){
+
+            $sub= $_POST['sub'];
+        }
+        if(isset($_POST['type'])){
+
+            $type= $_POST['type'];
+        }
 
         if($difficulty == 'option1')
         {
             $difficulty = 'عادي';
         }
         elseif ($difficulty == 'option2'){
+
             $difficulty = 'متوسط';
         }
         elseif ($difficulty == 'option3'){
+
             $difficulty = 'متقدم';
         }
 
@@ -47,6 +62,7 @@
                             <div class="col-3 border-start d-flex justify-content-center align-self-center p-3">
                                 <div class="w-100 p-5 bg-primary '.$icon.' bg-opacity-25 rounded">
                                     <i class="bi-chat-left-quote-fill d-flex justify-content-center icon" style="color: '.$css.' ;"></i>
+                                    <p class="text-center">دولاب القضايا</p>
                                 </div>
                             </div>
                             <div class="col-9 p-3">
@@ -93,6 +109,7 @@
                             <div class="col-3 border-start d-flex justify-content-center align-self-center p-3">
                                 <div class="w-100 p-5 bg-primary '.$icon.' bg-opacity-25 rounded">
                                     <i class="bi-chat-left-quote-fill d-flex justify-content-center icon" style="color: '.$css.' ;"></i>
+                                    <p class="text-center">دولاب القضايا</p>
                                 </div>
                             </div>
                             <div class="col-9 p-3">
@@ -114,9 +131,5 @@
             }
 
         }
-
-        /*while($row = $result->fetch_assoc()) {
-            echo $row['case_text'].'<br>';
-        }*/
 
     }

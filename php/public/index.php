@@ -150,13 +150,26 @@
         </form>
     </div>
     <script>
+        $(function() {
+            enable_cb();
+            $("#group1").click(enable_cb);
+        });
+
+        function enable_cb() {
+            if (this.checked) {
+                $("input.group1").removeAttr("disabled");
+            } else {
+                $("input.group1").attr("disabled", true);
+            }
+        }
 
         $(document).on('click',"#getCase", function ()
         {
-            var difficulty = $("[name='difficulty']:checked").val()
-            var cat = $("#cat").val();
-            var sub = $("#sub").val();
-            var type = $("#type").val();
+            var difficulty = $("[name='difficulty']:checked").val();
+            var type = $("[name='type']:enabled").val();
+            var cat = $("[name='cat']:enabled").val();
+            var sub = $("[name='sub']:enabled").val();
+            // var type = $("#type").val();
 
             $.post("/getCase",{
                 difficulty: difficulty,
