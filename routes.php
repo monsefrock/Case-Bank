@@ -6,6 +6,9 @@ require_once("{$_SERVER['DOCUMENT_ROOT']}/router.php");
 
 get('/','php/public/index.php');
 get('/login','php/public/login.html');
+
+post('/getCase','php/api/getCase.php');
+get('/csvSet' , 'php/api/csv_setCase.php');
 /*get('/login','auth/index.php');
 get('/register','auth/register.php');
 

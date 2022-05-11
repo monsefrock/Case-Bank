@@ -10,6 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>
 <body class="bio" dir="rtl">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -45,10 +46,11 @@
             </div>
         </div>
     </nav>
-    <div class="container glass border mb-5 mt-5 p-4">
-        <div class="row ">
-            <div class="col-12">
-                <div class="row pb-3 border-bottom">
+    <!--<div id="message" class="container text-center"></div>-->
+    <div class="container glass border mb-5 mt-3 p-4">
+        <div class="row " id="message">
+            <!--<div class="col-12">
+                <div class="row pt-3 pb-3 border-bottom">
                     <div class="col-3 border-start d-flex justify-content-center align-self-center p-3">
                         <div class="w-100 p-5 bg-primary bg-gradient bg-opacity-25 rounded">
                             <i class="bi-chat-left-quote-fill d-flex justify-content-center icon"></i>
@@ -65,7 +67,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>-->
         </div>
         <form dir="ltr" class="mb-4 text-center row row-cols-lg-auto d-flex justify-content-between pb-0 p-5">
             <span class="position-absolute top-95 start-50 translate-middle-x badge">
@@ -102,8 +104,8 @@
                 </div>
             </div>
             <div class="col-12 col-md-6">
-                <label for="cat" class="form-label">موضوع القضية</label>
-                <select id="cat" name="cat" class="form-select" >
+                <label for="sub" class="form-label">الموضوع الفرعي للقضية</label>
+                <select id="sub" name="sub" class="form-select" >
                     <option>ثقافة</option>
                     <option>إقتصاد</option>
                     <option>مجتمع</option>
@@ -119,8 +121,8 @@
                 </select>
             </div>
             <div class="col-12 col-md-6">
-                <label for="sub" class="form-label">الموضوع الفرعي للقضية</label>
-                <select id="sub" name="sub" class="form-select" >
+                <label for="cat" class="form-label">موضوع القضية</label>
+                <select id="cat" name="cat" class="form-select" >
                     <option>ثقافة</option>
                     <option>إقتصاد</option>
                     <option>مجتمع</option>
@@ -156,16 +158,20 @@
             var sub = $("#sub").val();
             var type = $("#type").val();
 
-            $.post("/get_case",{
+            $.post("/getCase",{
                 difficulty: difficulty,
                 cat: cat,
                 sub: sub,
                 type: type
             },function (data,status) {
-                    $("#message").html(data);
+
+                $("#message").html(data);
+
             })
 
         });
     </script>
+
+
 </body>
 </html>
