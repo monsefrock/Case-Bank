@@ -1,3 +1,9 @@
+<?php
+    require_once("{$_SERVER['DOCUMENT_ROOT']}\php\Class\Case_.php");
+    require_once ("{$_SERVER['DOCUMENT_ROOT']}\php\api\conn.php");
+
+    $cases = new Case_();
+?>
 <!DOCTYPE html>
 <html lang="ar">
 <head>
@@ -51,12 +57,12 @@
         <div class="row " id="message">
             <!--<div class="col-12">
                 <div class="row pt-3 pb-3 border-bottom">
-                    <div class="col-3 border-start d-flex justify-content-center align-self-center p-3">
+                    <div class="col-12 col-sm-3 d-flex justify-content-center align-self-center p-3">
                         <div class="w-100 p-5 bg-primary bg-gradient bg-opacity-25 rounded">
                             <i class="bi-chat-left-quote-fill d-flex justify-content-center icon"></i>
                         </div>
                     </div>
-                    <div class="col-9 p-3">
+                    <div class="col-12 col-sm-9 p-3">
                         <h2>
                             يعتقد هذا المجلس أن العقوبات الاقتصادية فعالة في إجبار الدول الأجنبية على الالتزام بالمعايير الدولية لحقوق الإنسان.
                         </h2>
@@ -69,8 +75,8 @@
                 </div>
             </div>-->
         </div>
-        <form dir="ltr" class="mb-4 text-center row row-cols-lg-auto d-flex justify-content-between pb-0 p-5">
-            <span class="position-absolute top-95 start-50 translate-middle-x badge">
+        <form dir="ltr" class="row mb-4 text-center row-cols-lg-auto d-flex justify-content-between pb-0 pt-3 p-5">
+                <span class="position-absolute top-95 start-50 translate-middle-x badge">
                 <button type="reset" class="btn btn-warning rounded">
                     <i class="bi bi-arrow-clockwise me-2"></i>
                     إعادة تعيين المرشح
@@ -84,95 +90,100 @@
                 <label for="difficulty" class="form-label">مستوى القضية</label>
                 <div class="col-12 d-flex justify-content-between">
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="difficulty" id="exampleRadios3" value="option3">
+                        <input class="form-check-input group1" type="radio" name="difficulty" id="exampleRadios3" value="option3">
                         <label class="form-check-label" for="exampleRadios3">
                             متقدم
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="difficulty" id="exampleRadios2" value="option2">
+                        <input class="form-check-input group1" type="radio" name="difficulty" id="exampleRadios2" value="option2">
                         <label class="form-check-label" for="exampleRadios2">
                             متوسط
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="difficulty" id="exampleRadios1" value="option1" checked>
+                        <input class="form-check-input group1" type="radio" name="difficulty" id="exampleRadios1" value="option1">
                         <label class="form-check-label" for="exampleRadios1">
                             عادي
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input group1" type="radio" name="difficulty" id="exampleRadios0" value="disabled"  checked>
+                        <label class="form-check-label" for="exampleRadios0">
+                            -
                         </label>
                     </div>
                 </div>
             </div>
             <div class="col-12 col-md-6">
                 <label for="sub" class="form-label">الموضوع الفرعي للقضية</label>
-                <select id="sub" name="sub" class="form-select" >
-                    <option>ثقافة</option>
-                    <option>إقتصاد</option>
-                    <option>مجتمع</option>
-                    <option>سياسة</option>
-                    <option>تعليم</option>
-                    <option>بيئة</option>
-                    <option>صحة</option>
-                    <option>رياضة</option>
-                    <option>حقوق وحريات</option>
-                    <option>علوم</option>
-                    <option>فلسفة</option>
-                    <option>دولي</option>
+                <select id="sub" name="sub" class="form-select group1" >
+                    <option value="disabled">-</option>
+                    <?php
+                    $result = $cases->getSubCat($conn);
+                    foreach ($result as $mainCat) {
+                        echo '<option value="'.$mainCat['case_s_cat'].'">'.$mainCat['case_s_cat'].'</option>';
+                    }
+                    ?>
                 </select>
             </div>
             <div class="col-12 col-md-6">
                 <label for="cat" class="form-label">موضوع القضية</label>
-                <select id="cat" name="cat" class="form-select" >
-                    <option>ثقافة</option>
-                    <option>إقتصاد</option>
-                    <option>مجتمع</option>
-                    <option>سياسة</option>
-                    <option>تعليم</option>
-                    <option>بيئة</option>
-                    <option>صحة</option>
-                    <option>رياضة</option>
-                    <option>حقوق وحريات</option>
-                    <option>علوم</option>
-                    <option>فلسفة</option>
-                    <option>دولي</option>
+                <select id="cat" name="cat" class="form-select group1" >
+                    <option value="disabled">-</option>
+                    <?php
+                    $result = $cases->getMainCat($conn);
+                    foreach ($result as $mainCat) {
+                        echo '<option value="'.$mainCat['case_m_cat'].'">'.$mainCat['case_m_cat'].'</option>';
+                    }
+                    ?>
                 </select>
             </div>
             <div class="col-12 col-md-6 ">
-                    <label for="type" class="form-label">نوع القضية</label>
-                    <select id="type" name="type" class="form-select">
-                        <option>قيم</option>
-                        <option>سياسات</option>
-                        <option>مساندة</option>
-                        <option>ندم وتفضيل</option>
-                        <option>خاصة</option>
-                    </select>
-                </div>
+                <label for="type" class="form-label">نوع القضية</label>
+                <select id="type" name="type" class="form-select">
+                    <?php
+                    $result = $cases->getTypeCat($conn);
+                    foreach ($result as $mainCat) {
+                        echo '<option value="'.$mainCat['case_type'].'">'.$mainCat['case_type'].'</option>';
+                    }
+                    ?>
+                </select>
+            </div>
         </form>
+
     </div>
     <script>
-        $(function() {
+
+        /*$(function() {
             enable_cb();
             $("#group1").click(enable_cb);
         });
 
         function enable_cb() {
+
             if (this.checked) {
-                $("input.group1").removeAttr("disabled");
+                $(".group1").removeAttr("disabled");
             } else {
-                $("input.group1").attr("disabled", true);
+                $(".group1").attr("disabled", true);
             }
-        }
+        }*/
 
         $(document).on('click',"#getCase", function ()
         {
-            var difficulty = $("[name='difficulty']:checked").val();
+            var difficulty = $("[name='difficulty']:enabled").val();
+
+            if(difficulty){
+                var diff = $("[name='difficulty']:checked").val();
+            }
+
             var type = $("[name='type']:enabled").val();
             var cat = $("[name='cat']:enabled").val();
             var sub = $("[name='sub']:enabled").val();
             // var type = $("#type").val();
 
             $.post("/getCase",{
-                difficulty: difficulty,
+                difficulty: diff,
                 cat: cat,
                 sub: sub,
                 type: type
