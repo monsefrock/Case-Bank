@@ -52,7 +52,7 @@
             </div>
         </div>
     </nav>
-    <!--<div id="message" class="container text-center"></div>-->
+
     <div class="container glass border mb-5 mt-3 p-4">
         <div class="row " id="message">
             <!--<div class="col-12">
@@ -169,6 +169,7 @@
             }
         }*/
 
+
         $(document).on('click',"#getCase", function ()
         {
             var difficulty = $("[name='difficulty']:enabled").val();
@@ -180,9 +181,8 @@
             var type = $("[name='type']:enabled").val();
             var cat = $("[name='cat']:enabled").val();
             var sub = $("[name='sub']:enabled").val();
-            // var type = $("#type").val();
 
-            $.post("/getCase",{
+                $.post("/getCase",{
                 difficulty: diff,
                 cat: cat,
                 sub: sub,

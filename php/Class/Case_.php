@@ -18,18 +18,47 @@ class Case_
 
     }
 
-    function getCaseM($conn,$type,$difficulty,$cat_m){
+    function setlog($conn, $date, $log, $ip){
 
-        $stmt = $conn->prepare("SELECT * FROM cases where case_type = '$type' and case_difficulty = '$difficulty' and case_m_cat = '$cat_m' ORDER BY RAND() limit 1");
+        $data = array($date,$ip,$log);
+        $stmt = $conn->prepare("insert into logcase (timestamp, ip, log) values (?,?,?);");
+//        $stmt->bind_param("sss" ,$date,$ip,$log);
+        $stmt->execute($data);
+
+    }
+
+    function getCaseM($conn,$type,$cat_m, $deff){
+
+        if($deff != 'disabled'){
+
+            $sql = "SELECT * FROM cases where case_type = '$type' and case_m_cat = '$cat_m' and case_difficulty = '$deff' ORDER BY RAND() limit 1";
+
+        }else{
+
+            $sql = "SELECT * FROM cases where case_type = '$type' and case_m_cat = '$cat_m' ORDER BY RAND() limit 1";
+
+        }
+
+        $stmt = $conn->prepare($sql);
         $stmt->execute();
 
         while ($row = $stmt->fetch()) {
             return $row;
         }
     }
-    function getCaseS($conn,$type,$difficulty,$cat_s){
 
-        $stmt = $conn->prepare("SELECT * FROM cases where case_type = '$type' and case_difficulty = '$difficulty' and case_s_cat = '$cat_s' ORDER BY RAND() limit 1");
+    function getCaseS($conn,$type,$cat_m,$cat_s, $deff){
+
+        if($deff != 'disabled'){
+
+            $sql = "SELECT * FROM cases where case_type = '$type' and case_m_cat = '$cat_m' and case_s_cat = '$cat_s' and case_difficulty = '$deff' ORDER BY RAND() limit 1";
+
+        }else{
+
+            $sql = "SELECT * FROM cases where case_type = '$type' and case_m_cat = '$cat_m' and case_s_cat = '$cat_s' ORDER BY RAND() limit 1";
+        }
+
+        $stmt = $conn->prepare($sql);
         $stmt->execute();
 
         while ($row = $stmt->fetch()) {
@@ -37,14 +66,37 @@ class Case_
         }
     }
 
-    function getCaseRand($conn,$type){
-        $stmt = $conn->prepare("SELECT * FROM cases where case_type = '$type' ORDER BY RAND() limit 1");
+    function getCaseRand($conn,$type, $deff){
+
+        if($deff != 'disabled'){
+
+            $sql = "SELECT * FROM cases where case_type = '$type' and case_difficulty = '$deff' ORDER BY RAND() limit 1";
+
+        }else{
+
+            $sql = "SELECT * FROM cases where case_type = '$type' ORDER BY RAND() limit 1";
+        }
+
+        $stmt = $conn->prepare($sql);
         $stmt->execute();
 
         while ($row = $stmt->fetch()) {
             return $row;
         }
     }
+
+    function getAll($conn,$type,$cat_m,$cat_s,$difficulty){
+
+        $stmt = $conn->prepare("SELECT * FROM cases where case_type = '$type' and case_m_cat = '$cat_m' and case_s_cat = '$cat_s' and case_difficulty = '$difficulty' ORDER BY RAND() limit 1");
+        $stmt->execute();
+
+        while ($row = $stmt->fetch()) {
+            return $row;
+        }
+    }
+
+
+
 
     function getMainCat($conn)
     {
