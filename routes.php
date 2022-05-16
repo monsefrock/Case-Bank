@@ -8,6 +8,7 @@ get('/','php/public/index.php');
 get('/login','php/public/login.html');
 
 post('/getCase','php/api/getCase.php');
+post('/logCase','php/api/logCase.php');
 get('/csvSet' , 'php/api/csv_setCase.php');
 /*get('/login','auth/index.php');
 get('/register','auth/register.php');

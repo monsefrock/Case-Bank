@@ -11,11 +11,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>بنك القضايا | الرئيسية </title>
     <link rel="stylesheet" href="../../assets/main.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../../assets/signin.css" rel="stylesheet">
+    <link href="../../assets/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="../../assets/bootstrap/dist/js/bootstrap.bundle.min.js" ></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    <script src="../../assets/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>
 <body class="bio" dir="rtl">
@@ -52,7 +53,16 @@
             </div>
         </div>
     </nav>
-
+    <div class="toast-container top-0 end-0 p-3 position-absolute">
+        <div dir="ltr" id="clipbords" class="toast align-items-center bg-success border" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body text-white" dir="rtl">
+                    تم نسخ المقولة بنجاح.
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
     <div class="container glass border mb-5 mt-3 p-4">
         <div class="row " id="message">
             <!--<div class="col-12">
@@ -63,7 +73,7 @@
                         </div>
                     </div>
                     <div class="col-12 col-sm-9 p-3">
-                        <h2>
+                        <h2 id="text_copy">
                             يعتقد هذا المجلس أن العقوبات الاقتصادية فعالة في إجبار الدول الأجنبية على الالتزام بالمعايير الدولية لحقوق الإنسان.
                         </h2>
                         <div>
@@ -71,17 +81,23 @@
                             <a href="#" tabindex="-1" class="btn btn-sm btn-warning disabled placeholder mt-4" aria-hidden="true">اقتصاد</a>
                             <a href="#" tabindex="-1" class="btn btn-sm btn-info disabled placeholder mt-4" aria-hidden="true">دولي</a>
                         </div>
+                        <div class="mt-2">
+                            <button id="liveToastBtn" class="btn btn-sm btn-outline-primary" onclick="copyToClipboard("#text_copy")">
+                                نسخ المقولة
+                                <i class="bi bi-clipboard me-2"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>-->
         </div>
         <form dir="ltr" class="row mb-4 text-center row-cols-lg-auto d-flex justify-content-between pb-0 pt-3 p-5">
                 <span class="position-absolute top-95 start-50 translate-middle-x badge">
-                <button type="reset" class="btn btn-warning rounded">
+                <button type="reset" class="btn btn-primary rounded">
                     <i class="bi bi-arrow-clockwise me-2"></i>
                     إعادة تعيين المرشح
                 </button>
-                <a id="getCase" class="btn btn-primary rounded">
+                <a id="getCase" class="btn btn-dda text-white rounded">
                     <i class="bi bi-search me-2"></i>
                     ابحث عن القضية
                 </a>
@@ -155,19 +171,40 @@
     </div>
     <script>
 
-        /*$(function() {
-            enable_cb();
-            $("#group1").click(enable_cb);
+        $(document).on('click',"#liveToastBtn_mon", function (){
+
+            var difficulty = $("[name='difficulty']:enabled").val();
+            if(difficulty){
+                var diff = $("[name='difficulty']:checked").val();
+            }
+            var type = $("[name='type']:enabled").val();
+            var cat = $("[name='cat']:enabled").val();
+            var sub = $("[name='sub']:enabled").val();
+
+            $.post("/logCase",{
+                difficulty: diff,
+                cat: cat,
+                sub: sub,
+                type: type
+            },function (data,status) {
+
+                const toastLiveExample = document.getElementById('clipbords');
+                const toast = new bootstrap.Toast(toastLiveExample);
+                toast.show();
+
+            })
+
+
         });
 
-        function enable_cb() {
+        function copyToClipboard(element) {
 
-            if (this.checked) {
-                $(".group1").removeAttr("disabled");
-            } else {
-                $(".group1").attr("disabled", true);
-            }
-        }*/
+            var $temp = $("<input>");
+            $("body").append($temp);
+            $temp.val($(element).text()).select();
+            document.execCommand("copy");
+            $temp.remove();
+        }
 
 
         $(document).on('click',"#getCase", function ()
@@ -182,7 +219,7 @@
             var cat = $("[name='cat']:enabled").val();
             var sub = $("[name='sub']:enabled").val();
 
-                $.post("/getCase",{
+            $.post("/getCase",{
                 difficulty: diff,
                 cat: cat,
                 sub: sub,

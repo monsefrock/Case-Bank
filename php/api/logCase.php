@@ -1,16 +1,34 @@
 <?php
 
+    require_once("{$_SERVER['DOCUMENT_ROOT']}\php\Class\Case_.php");
+    include "conn.php";
 
+    recLog($conn,$_POST);
 
+    function recLog($conn,$rec){
 
-    /*echo 'User Real IP - '.getUserIpAddr().'<br>';*/
+        $ip = getUserIpAddr();
+        $x = unserialize(file_get_contents('http://www.geoplugin.net/php.gp?ip='.$ip));
+        $x = json_encode($x,JSON_UNESCAPED_UNICODE);
 
+        $log = json_encode($rec,JSON_UNESCAPED_UNICODE);
 
-$x = unserialize(file_get_contents('http://www.geoplugin.net/php.gp?ip='.'102.69.1.233'));
+        $today = date("Y-m-d H:i:s");
 
-echo $x["geoplugin_timezone"];
-    /*echo json_encode($x,JSON_UNESCAPED_UNICODE) ;*/
+        $cases = new Case_();
+        $cases->setlog($conn,$today,$log,$x);
 
-//    $today = date("Y-m-d H:i:s");
-//    echo $today;
+    }
 
+    function getUserIpAddr(){
+        if(!empty($_SERVER['HTTP_CLIENT_IP'])){
+            //ip from share internet
+            $ip = $_SERVER['HTTP_CLIENT_IP'];
+        }elseif(!empty($_SERVER['HTTP_X_FORWARDED_FOR'])){
+            //ip pass from proxy
+            $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        }else{
+            $ip = $_SERVER['REMOTE_ADDR'];
+        }
+        return $ip;
+    }

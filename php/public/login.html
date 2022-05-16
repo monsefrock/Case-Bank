@@ -32,25 +32,74 @@
     <!-- Custom styles for this template -->
     <link href="../../assets/signin.css" rel="stylesheet">
   </head>
-  <body class="text-center">
-    <main class="form-signin">
-      <form>
-        <div class="p-4 rounded">
-          <a href="/" ><img src="../../assets/img/og1logo.png" alt="DDA LOGO"/></a>
-        </div>
-        <h1 class="h3 mt-4 mb-4 fw-normal">الرجاء تسجيل الدخول</h1>
+  <body class="">
+  <section class="section register d-flex flex-column align-items-center justify-content-center py-4">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
 
-        <div class="form-floating">
-          <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-          <label for="floatingInput">البريد الإلكتروني</label>
-        </div>
-        <div class="form-floating">
-          <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-          <label for="floatingPassword">كلمة المرور</label>
-        </div>
+          <div class="d-flex justify-content-center py-4">
+            <a href="/" class="logo d-flex align-items-center w-auto">
+              <img src="../../assets/img/og1logo.png" alt="">
+            </a>
+          </div><!-- End Logo -->
 
-        <button class="w-100 mt-4 btn btn-lg btn-primary" type="submit">تسجيل الدخول</button>
-      </form>
-    </main>
+          <div class="card border-0 shadow mb-3" dir="rtl">
+            <div class="card-body">
+              <div class="pt-4 pb-2">
+                <h5 class="card-title text-center pb-0 fs-4">تسجيل الدخول إلى حسابك</h5>
+                <p class="text-center small">أدخل بريدك الإلكتروني وكلمة المرور لتسجيل الدخول</p>
+              </div>
+
+              <form dir="" class="row g-3 mb-5 needs-validation" novalidate>
+
+                <div class="col-12">
+                  <label for="yourUsername" class="form-label text-end">البريد الإلكتروني</label>
+                  <div class="input-group has-validation">
+                    <input type="email" name="username" class="form-control" id="yourUsername" required>
+                    <div class="invalid-feedback" dir="rtl">رجاءا أدخل بريدك الإلكتروني.</div>
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <label for="yourPassword" class="form-label">الرقم السري</label>
+                  <input type="password" name="password" class="form-control" id="yourPassword" required>
+                  <div class="invalid-feedback">من فضلك أدخل رقمك السري!</div>
+                </div>
+
+                <div class="col-12 mt-4">
+                  <button class="btn btn-dda w-100" type="submit">تسجيل الدخول</button>
+                </div>
+              </form>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </section>
+  <script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (() => {
+      'use strict'
+
+      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+      const forms = document.querySelectorAll('.needs-validation')
+
+      // Loop over them and prevent submission
+      Array.from(forms).forEach(form => {
+        form.addEventListener('submit', event => {
+          if (!form.checkValidity()) {
+            event.preventDefault()
+            event.stopPropagation()
+          }
+
+          form.classList.add('was-validated')
+        }, false)
+      })
+    })()
+  </script>
   </body>
 </html>
