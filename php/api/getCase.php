@@ -107,13 +107,13 @@
             }
             echo '<div class="col-12 sssd">
                         <div class="row pt-3 pb-3 border-bottom">
-                            <div class="col-3 border-start d-flex justify-content-center align-self-center p-3">
+                            <div class="col-12 col-sm-3  d-flex justify-content-center align-self-center p-3">
                                 <div class="w-100 p-5 bg-primary '.$icon.' bg-opacity-25 rounded">
                                     <i class="bi-chat-left-quote-fill d-flex justify-content-center icon" style="color: '.$css.' ;"></i>
                                     <p class="text-center">دولاب القضايا</p>
                                 </div>
                             </div>
-                            <div class="col-9 p-3">
+                            <div class="col-12 col-sm-9 p-3">
                                 <h2 id="text_copy">
                                     '.$result['case_text'].'
                                 </h2>
@@ -173,13 +173,13 @@
             }
             echo '<div class="col-12">
                         <div class="row pt-3 pb-3 border-bottom">
-                            <div class="col-3 border-start d-flex justify-content-center align-self-center p-3">
+                            <div class="col-12 col-sm-3  d-flex justify-content-center align-self-center p-3">
                                 <div class="w-100 p-5 bg-primary '.$icon.' bg-opacity-25 rounded">
                                     <i class="bi-chat-left-quote-fill d-flex justify-content-center icon" style="color: '.$css.' ;"></i>
                                     <p class="text-center">دولاب القضايا</p>
                                 </div>
                             </div>
-                            <div class="col-9 p-3">
+                            <div class="col-12 col-sm-9 p-3">
                                 <h2 id="text_copy">
                                     '.$result['case_text'].'
                                 </h2>
@@ -240,13 +240,13 @@
             }
             echo '<div class="col-12">
                         <div class="row pt-3 pb-3 border-bottom">
-                            <div class="col-3 border-start d-flex justify-content-center align-self-center p-3">
+                            <div class="col-12 col-sm-3  d-flex justify-content-center align-self-center p-3">
                                 <div class="w-100 p-5 bg-primary '.$icon.' bg-opacity-25 rounded">
                                     <i class="bi-chat-left-quote-fill d-flex justify-content-center icon" style="color: '.$css.' ;"></i>
                                     <p class="text-center">دولاب القضايا</p>
                                 </div>
                             </div>
-                            <div class="col-9 p-3">
+                            <div class="col-12 col-sm-9 p-3">
                                 <h2 id="text_copy">
                                     '.$result['case_text'].'
                                 </h2>
@@ -307,13 +307,13 @@
             }
             echo '<div class="col-12">
                         <div class="row pt-3 pb-3 border-bottom">
-                            <div class="col-3 border-start d-flex justify-content-center align-self-center p-3">
+                            <div class="col-12 col-sm-3  d-flex justify-content-center align-self-center p-3">
                                 <div class="w-100 p-5 bg-primary '.$icon.' bg-opacity-25 rounded">
                                     <i class="bi-chat-left-quote-fill d-flex justify-content-center icon" style="color: '.$css.' ;"></i>
                                     <p class="text-center">دولاب القضايا</p>
                                 </div>
                             </div>
-                            <div class="col-9 p-3">
+                            <div class="col-12 col-sm-9 p-3">
                                 <h2 id="text_copy">
                                     '.$result['case_text'].'
                                 </h2>

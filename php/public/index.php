@@ -12,38 +12,48 @@
     <title>بنك القضايا | الرئيسية </title>
     <link rel="stylesheet" href="../../assets/main.css">
     <link href="../../assets/signin.css" rel="stylesheet">
-    <link href="../../assets/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <!--<link href="../../assets/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <script src="../../assets/bootstrap/dist/js/bootstrap.bundle.min.js" ></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="../../assets/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>-->
 </head>
 <body class="bio" dir="rtl">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-            <a class="navbar-brand" href="#">
+
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="bi bi-three-dots-vertical"></i>
+            </button>
+
+            <a class="navbar-brand" href="/">
                 <img src="../../assets/img/og1logo.png" alt="dda logo">
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarToggleExternalContent">
+
+
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="/">
+                        <a class="nav-link" aria-current="page" href="https://dda.ly">
                             <i class="bi bi-house ms-2"></i>
                             الموقع الرسمي
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="/">
+                        <a class="nav-link" aria-current="page" href="https://timer.dda.ly">
                             <i class="bi bi-stopwatch ms-2"></i>
                             المؤقت
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="/">
+                        <a class="nav-link" aria-current="page" href="https://blog.dda.ly">
                             <i class="bi bi-quote ms-2"></i>
                             االمدونة
                         </a>
@@ -201,6 +211,7 @@
 
             var $temp = $("<input>");
             $("body").append($temp);
+            $("body").append("DDA Copyright");
             $temp.val($(element).text()).select();
             document.execCommand("copy");
             $temp.remove();

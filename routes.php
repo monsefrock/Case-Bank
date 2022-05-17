@@ -10,6 +10,8 @@ get('/login','php/public/login.html');
 post('/getCase','php/api/getCase.php');
 post('/logCase','php/api/logCase.php');
 get('/csvSet' , 'php/api/csv_setCase.php');
+
+get('/admin/home' , 'php/admin/home.html');
 /*get('/login','auth/index.php');
 get('/register','auth/register.php');
 
