@@ -11,7 +11,7 @@ post('/getCase','php/api/getCase.php');
 post('/logCase','php/api/logCase.php');
 get('/csvSet' , 'php/api/csv_setCase.php');
 
-get('/admin/home' , 'php/admin/home.html');
+get('/dashboard' , 'php/admin/home.html');
 /*get('/login','auth/index.php');
 get('/register','auth/register.php');
 

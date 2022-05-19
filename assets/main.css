@@ -40,7 +40,7 @@
     background-color: #f5510e;
 }
 .icon-orange{
-    color: #fccab6;
+    color: #f5510e;
 }
 .float{
     position:fixed;
@@ -157,3 +157,5 @@ table.dataTable.dtr-inline.collapsed>tbody>tr.parent>th:first-child:before {
     float: left;
 
 }
+
+
