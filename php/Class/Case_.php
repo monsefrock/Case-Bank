@@ -95,6 +95,14 @@ class Case_
         }
     }
 
+    function getCasesAll($conn){
+
+        $stmt = $conn->prepare("SELECT * FROM cases");
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
+
 
 
 

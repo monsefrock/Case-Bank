@@ -18,11 +18,13 @@
 </head>
 <body class="bio" dir="rtl">
     <section class="container-fluid">
-        <div class="row min-vh-100">
-            <div class="col-2 border-end bg-white">
+        <div class="row">
+            <div class="col-2 border-end bg-white align-content-between">
 
                 <div class="p-2 d-flex justify-content-center">
-                    <img class="figure-img" style="height: 30px; width: 50%" src="../../assets/img/og1logo.png" alt="dda logo"/>
+                    <a href="/dashboard" class="w-100">
+                        <img class="img-fluid"  src="../../assets/img/og1logo.png" alt="dda logo"/>
+                    </a>
                 </div>
 
                 <div class="p-2 rounded-2 bg-light border border-light mt-2 d-flex justify-content-between align-items-center">
@@ -49,8 +51,20 @@
 
                 </div>
 
-                <div class="">
-
+                <div class="mt-5 w-100">
+                    <div class="navbar-nav" id="navbarNav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item p-2 border-bottom">
+                                <a class="nav-link" aria-current="page" href="#">المستخدمين</a>
+                            </li>
+                            <li class="nav-item p-2 border-bottom">
+                                <a id="getCasesbtn" class="nav-link" href="#">القضايا</a>
+                            </li>
+                            <li class="nav-item p-2">
+                                <a class="nav-link" href="#">الإحصائيات</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
 
             </div>
@@ -65,29 +79,81 @@
                 </div>
                 <div class="row pt-3 pb-3 border-bottom">
                     <div class="d-flex justify-content-between p-1 overflow-auto">
-                        <button class="btn btn-sm btn-dda">
+                        <button class="btn btn-sm btn-primary">
                             قيمة
                         </button>
-                        <button class="btn btn-sm btn-dda">
+                        <button class="btn btn-sm btn-success">
                             سياسة
                         </button>
-                        <button class="btn btn-sm btn-dda">
+                        <button class="btn btn-sm btn-danger">
                             خاصة
                         </button>
-                        <button class="btn btn-sm btn-dda">
+                        <button class="btn btn-sm btn-warning">
                             مساندة
                         </button>
-                        <button class="btn btn-sm btn-dda">
+                        <button class="btn btn-sm btn-secondary">
                             ندم وتفضيل
                         </button>
                     </div>
                 </div>
-                <div class="row">
-
+                <div dir="ltr" class="row ex3" id="cases_get">
+                    <!--<div class="col-12 border-end border-3 border-primary">
+                        <div class="row">
+                            <div class="col-12 p-2 pb-0 mb-1">
+                                <p class="text-justify">
+                                    يعتقد هذا المجلس أن العقوبات الاقتصادية فعالة في إجبار الدول الأجنبية على الالتزام بالمعايير الدولية لحقوق الإنسان.
+                                </p>
+                                <div class="d-flex justify-content-end mt-2">
+                                    <span class="badge bg-primary bg-opacity-50 ms-3">اقتصاد</span >
+                                    <span class="badge bg-primary bg-opacity-50">دولي</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row border-bottom border-1">
+                            <div  class="d-flex justify-content-evenly overflow-auto bg-light">
+                                <button style="font-size: 1.1rem; color: #6e6e6e" class="btn btn-light btn-sm me-1 ">
+                                    <i class="bi bi-pencil-square"></i>
+                                </button>
+                                <button style="font-size: 1.1rem; color: #6e6e6e" class="btn btn-light btn-sm me-1 ">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                                <button style="font-size: 1.1rem; color: #6e6e6e" class="btn btn-light btn-sm">
+                                    <i class="bi bi-easel2-fill"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>-->
                 </div>
             </div>
-            <div class="col-7 ">
+            <div class="col-7 p-0">
+                <div class="p-3 bg-light w-100">
+                    <div class="row align-items-lg-baseline">
+                        <div class="col-8">
+                            <p class="bg-primary w-25 text-white p-3 text-center rounded-3">قيمة</p>
+                        </div>
+                        <div class="col-4 d-flex justify-content-end">
+                            <p class="w-25 bg-orange p-1 rounded-1 text-white text-center me-2">دولي</p>
+                            <p class="w-25 bg-orange p-1 rounded-1 text-white text-center me-2">سياسة</p>
+                            <p class="w-25 bg-orange p-1 rounded-1 text-white text-center">متقدم</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-3 bg-white w-100">
+                    <div>
+                        <h4 style="vertical-align: middle;" class="lh-base border-start border-primary border-5 text-justify p-2 pt-0">يرى هذا المجلس أن الحرب الروسية على أوكرانيا مبررة.</h4>
+                    </div>
+                </div>
+                <div class="p-3 bg-white w-100">
+                    <div class="form-floating">
+                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px">
 
+                        </textarea>
+                        <label for="floatingTextarea2">Comments</label>
+                    </div>
+                </div>
+                <div class="footer bg-light text-black">
+                    <p class="p-0 me-2 m-0">جميع الحقوق محفوضة مؤسسة الحوار والمناظرة | النسخة 1.00.1</p>
+                </div>
             </div>
         </div>
     </section>
@@ -284,32 +350,14 @@
 
 
 <script>
-    $(document).ready(function() {
-        $('#files_list').DataTable({
-            "aLengthMenu": [
-                [5, 10, 25, -1],
-                [5, 10, 25, "الكل"]
-            ],
-            "iDisplayLength": 10,
+    $( document ).ready(function() {
 
-            "language": {
-                "sProcessing": "جارٍ التحميل...",
-                "sLengthMenu": "أظهر _MENU_ مدخلات",
-                "sZeroRecords": "لم يعثر على أية سجلات",
-                "sInfo": "إظهار _START_ إلى _END_ من أصل _TOTAL_ مدخل",
-                "sInfoEmpty": "يعرض 0 إلى 0 من أصل 0 سجل",
-                "sInfoFiltered": "(منتقاة من مجموع _MAX_ مُدخل)",
-                "sInfoPostFix": "",
-                "sSearch": "البحث:",
-                "sUrl": "",
-                "oPaginate": {
-                    "sFirst": "الأول",
-                    "sPrevious": "السابق",
-                    "sNext": "التالي",
-                    "sLast": "الأخير"
-                }
-            }
-        });
+        $.get("/admin/getCase",{},function (data,status) {
+
+            $("#cases_get").html(data);
+
+        })
+
     });
 </script>
 </body>
