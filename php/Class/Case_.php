@@ -102,6 +102,20 @@ class Case_
 
         return $stmt->fetchAll();
     }
+    function getCasesAllFilter($conn,$type){
+
+        $stmt = $conn->prepare("SELECT * FROM cases where case_type = '$type'");
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
+    function getCasesAllSearch($conn,$search){
+
+        $stmt = $conn->prepare("SELECT * FROM cases where case_text like '%$search%'");
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
 
 
 

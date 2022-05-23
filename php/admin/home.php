@@ -17,9 +17,50 @@
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.0/js/jquery.dataTables.js"></script>
 </head>
 <body class="bio" dir="rtl">
+
+    <div class="d-xl-none">
+        <nav class="navbar navbar-expand-lg bg-light border-bottom">
+            <div class="container-fluid">
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <div class="p-1">
+                        <div class="dropdown">
+                            <div class="" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                منصف الإدريسي
+                            </div>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        <i class="bi bi-box-arrow-right"></i>
+                                        تسجيل الخروج
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <ul class="navbar-nav">
+                        <li class="nav-item p-2">
+                            <a class="nav-link" aria-current="page" href="#">المستخدمين</a>
+                        </li>
+                        <li class="nav-item p-2 ">
+                            <a id="getCasesbtn" class="nav-link" href="/dashboard">القضايا</a>
+                        </li>
+                        <li class="nav-item p-2">
+                            <a class="nav-link" href="#">الإحصائيات</a>
+                        </li>
+                    </ul>
+                </div>
+                <a class="navbar-brand" href="/dashboard"><img class="img-fluid"  src="../../assets/img/og1logo.png" alt="dda logo"/></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </nav>
+    </div>
+
     <section class="container-fluid">
         <div class="row">
-            <div class="col-2 border-end bg-white align-content-between">
+            <div class="col-2 d-none d-xl-block d-xxl-none border-end bg-white align-content-between">
 
                 <div class="p-2 d-flex justify-content-center">
                     <a href="/dashboard" class="w-100">
@@ -58,7 +99,7 @@
                                 <a class="nav-link" aria-current="page" href="#">المستخدمين</a>
                             </li>
                             <li class="nav-item p-2 border-bottom">
-                                <a id="getCasesbtn" class="nav-link" href="#">القضايا</a>
+                                <a id="getCasesbtn" class="nav-link" href="/dashboard">القضايا</a>
                             </li>
                             <li class="nav-item p-2">
                                 <a class="nav-link" href="#">الإحصائيات</a>
@@ -68,10 +109,10 @@
                 </div>
 
             </div>
-            <div class="col-3 bg-white border-end">
+            <div class="col-xl-3 col-4  bg-white border-end">
                 <div class="row pt-3 pb-1 border-bottom">
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control border-end-0" placeholder="البحث عن القضايا">
+                        <input name="search" type="text" class="form-control search-bar border-end-0" placeholder="البحث عن القضايا">
                         <span class="input-group-text bg-white">
                             <i class="icon-orange bi bi-search"></i>
                         </span>
@@ -79,19 +120,19 @@
                 </div>
                 <div class="row pt-3 pb-3 border-bottom">
                     <div class="d-flex justify-content-between p-1 overflow-auto">
-                        <button class="btn btn-sm btn-primary">
+                        <button data-text="قيم" class="btn filter btn-sm btn-primary">
                             قيمة
                         </button>
-                        <button class="btn btn-sm btn-success">
+                        <button data-text="سياسات" class="btn filter btn-sm btn-success">
                             سياسة
                         </button>
-                        <button class="btn btn-sm btn-danger">
+                        <button data-text="خاصة" class="btn filter btn-sm btn-danger">
                             خاصة
                         </button>
-                        <button class="btn btn-sm btn-warning">
+                        <button data-text="مساندة" class="btn filter btn-sm btn-warning">
                             مساندة
                         </button>
-                        <button class="btn btn-sm btn-secondary">
+                        <button data-text="ندم وتفضيل" class="btn filter btn-sm btn-secondary">
                             ندم وتفضيل
                         </button>
                     </div>
@@ -125,7 +166,7 @@
                     </div>-->
                 </div>
             </div>
-            <div class="col-7 p-0">
+            <div class="col-8 col-xl-7 container-fluid p-0 bg-white">
                 <div class="p-3 bg-light w-100">
                     <div class="row align-items-lg-baseline">
                         <div class="col-8">
@@ -134,25 +175,76 @@
                         <div class="col-4 d-flex justify-content-end">
                             <p class="w-25 bg-orange p-1 rounded-1 text-white text-center me-2">دولي</p>
                             <p class="w-25 bg-orange p-1 rounded-1 text-white text-center me-2">سياسة</p>
-                            <p class="w-25 bg-orange p-1 rounded-1 text-white text-center">متقدم</p>
+                            <p class="w-25 bg-light shadow p-1 rounded-1 text-center">متقدم</p>
                         </div>
                     </div>
                 </div>
                 <div class="p-3 bg-white w-100">
-                    <div>
-                        <h4 style="vertical-align: middle;" class="lh-base border-start border-primary border-5 text-justify p-2 pt-0">يرى هذا المجلس أن الحرب الروسية على أوكرانيا مبررة.</h4>
+                    <div class="case-hover border-secondary border-start rounded border-5">
+                        <h4 class="lh-base text-justify p-2 pt-0 text-wrap">يرى هذا المجلس أن الحرب الروسية على أوكرانيا مبررة.</h4>
                     </div>
                 </div>
                 <div class="p-3 bg-white w-100">
-                    <div class="form-floating">
-                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px">
-
-                        </textarea>
-                        <label for="floatingTextarea2">Comments</label>
-                    </div>
+                    <p class="text-justify lh-base">
+                        هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسوم لأنها تعطي توزيعاَ طبيعياَ -إلى حد ما- للأحرف عوضاً عن استخدام "هنا يوجد محتوى نصي، هنا يوجد محتوى نصي" فتجعلها تبدو (أي الأحرف) وكأنها نص مقروء. العديد من برامح النشر المكتبي وبرامح تحرير صفحات الويب تستخدم لوريم إيبسوم بشكل إفتراضي كنموذج عن النص، وإذا قمت بإدخال "lorem ipsum" في أي محرك بحث ستظهر العديد من المواقع الحديثة العهد في نتائج البحث. على مدى السنين ظهرت نسخ جديدة ومختلفة من نص لوريم إيبسوم، أحياناً عن طريق الصدفة، وأحياناً عن عمد كإدخال بعض العبارات الفكاهية إليها.
+                    </p>
                 </div>
-                <div class="footer bg-light text-black">
-                    <p class="p-0 me-2 m-0">جميع الحقوق محفوضة مؤسسة الحوار والمناظرة | النسخة 1.00.1</p>
+                <div class="p-3 bg-white w-100">
+                    <ul class="nav nav-tabs mb-3" id="pills-tab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">نقاط مع المقولة</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link " id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">نقاط ضد المقولة</button>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="pills-tabContent">
+                        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
+
+                            <div class="accordion" id="accordionExample">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingOne">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                            Accordion Item #2
+                                        </button>
+                                    </h2>
+                                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingTwo">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                            Accordion Item #2
+                                        </button>
+                                    </h2>
+                                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingThree">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                            Accordion Item #3
+                                        </button>
+                                    </h2>
+                                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
+
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -359,6 +451,33 @@
         })
 
     });
+
+    $('.filter').on('click',function (){
+
+        var type = $(this).data('text')
+
+        $.post("/admin/getCaseFilter",{
+            typr: type
+        },function (data,status) {
+
+            $("#cases_get").html(data);
+
+        })
+    });
+
+    $( ".search-bar" ).change(function() {
+
+         var search = $("[name='search']").val();
+
+        $.post("/admin/getCaseSearch",{
+            search: search
+        },function (data,status) {
+
+            $("#cases_get").html(data);
+
+        })
+    });
+
 </script>
 </body>
 </html>

@@ -42,14 +42,11 @@
 .icon-orange{
     color: #f5510e;
 }
-.footer {
-    z-index: -1;
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    color: white;
-    text-align: left;
+.case-hover{
+    padding: 30px;
+    border-top: 1px solid #dee2e6 !important;
+    border-left: 1px solid #dee2e6 !important;
+    border-bottom: 1px solid #dee2e6 !important;
 }
 .nav-item:hover{
     background-color: #c5d7f2;
