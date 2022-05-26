@@ -18,6 +18,21 @@ class Case_
 
     }
 
+    function setNewCase($conn,$post){
+
+        $data = array($post["case_text"], $post["cat"], $post["sub"], $post["type"], $post["difficulty"]);
+        $stmt = $conn->prepare("insert into cases (case_text, case_m_cat, case_s_cat, case_type, case_difficulty) VALUES (?, ?, ?, ?, ?)");
+        //  $stmt->bind_param("sssss", $this->case_text, $this->case_m_cat, $this->case_s_cat , $this->case_type,$this->case_difficulty);
+        if($stmt->execute($data)){
+
+            return true;
+
+        }else{
+
+            return false;
+        }
+    }
+
     function setlog($conn, $date, $log, $ip){
 
         $data = array($date,$ip,$log);

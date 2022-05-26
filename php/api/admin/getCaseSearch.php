@@ -1,6 +1,6 @@
 <?php
-    require_once("{$_SERVER['DOCUMENT_ROOT']}\php\Class\Case_.php");
-    include "{$_SERVER['DOCUMENT_ROOT']}\php\api\conn.php";
+    require_once("{$_SERVER['DOCUMENT_ROOT']}/php/Class/Case_.php");
+    include "{$_SERVER['DOCUMENT_ROOT']}/php/api/conn.php";
 
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
@@ -54,7 +54,7 @@
                                 </div>
                                 <div class="row border-bottom border-1">
                                     <div  class="d-flex justify-content-evenly overflow-auto bg-light">
-                                        <button data-id="'.$mainCat["id"].'" class="edit btn-font btn btn-light btn-sm me-1 ">
+                                        <button data-id="'.$mainCat["id"].'" class="edit-btn btn-font btn btn-light btn-sm me-1 ">
                                             <i class="bi bi-pencil-square"></i>
                                         </button>
                                         <button data-id="'.$mainCat["id"].'" class="delete btn-font btn btn-light btn-sm me-1 ">

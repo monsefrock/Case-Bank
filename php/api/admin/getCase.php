@@ -50,7 +50,7 @@
                         </div>
                         <div class="row border-bottom border-1">
                             <div  class="d-flex justify-content-evenly overflow-auto bg-light">
-                                <button data-id="'.$mainCat["id"].'" class="edit btn-font btn btn-light btn-sm me-1 ">
+                                <button data-id="'.$mainCat["id"].'" class="edit-btn btn-font btn btn-light btn-sm me-1 ">
                                     <i class="bi bi-pencil-square"></i>
                                 </button>
                                 <button data-id="'.$mainCat["id"].'" class="delete btn-font btn btn-light btn-sm me-1 ">
@@ -61,8 +61,18 @@
                                 </button>
                             </div>
                         </div>
-                    </div>';
+                    </div>
+                ';
         }
+        echo '<script>
+        $(".edit-btn").on("click",function (){
+            $.get("/admin/edit-new-s",{},function (data,status) {
+
+                $(".dash-body").html(data);
+
+            })
+        });
+    </script>';
     }else{
         echo "<h3 class='text-center text-danger' dir='rtl'>لا توجد بيانات لعرضها.</h3>";
     }

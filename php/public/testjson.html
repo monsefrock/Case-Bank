@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../assets/jquery.js" ></script>
+</head>
+<body>
+
+
+<script>
+
+    var filePath = 'test.json';
+
+    $.ajax({
+        url: filePath,
+        dataType: 'json',
+        jsonpCallback: 'MyJSONPCallback',// specify the callback name if you're hard-coding it
+        success: function(data){
+            // we make a successful JSONP call!
+            $.each( data, function( key, val ) {
+
+                console.log(val['titel']);
+                console.log(val['content']);
+
+            });
+        }
+    });
+
+</script>
+</body>
+</html>

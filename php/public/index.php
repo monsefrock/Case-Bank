@@ -209,12 +209,16 @@
 
         function copyToClipboard(element) {
 
-            var $temp = $("<input>");
-            $("body").append($temp);
-            $("body").append("DDA Copyright");
-            $temp.val($(element).text()).select();
+            $(element).text().replace(/^\s+|\s+$/g, '');
+            x = $(element).text().concat(" | ", "جميع الحقوق محفوظة مؤسسة الحوار والمناظرة");
+            x.replace(/^\s+|\s+$/g, '');
+            var sampleTextarea = document.createElement("textarea");
+            document.body.appendChild(sampleTextarea);
+            sampleTextarea.value = x; //save main text in it
+            console.log(sampleTextarea.value);
+            sampleTextarea.select(); //select textarea contenrs
             document.execCommand("copy");
-            $temp.remove();
+            document.body.removeChild(sampleTextarea);
         }
 
 

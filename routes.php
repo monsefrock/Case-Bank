@@ -13,6 +13,12 @@ get('/csvSet' , 'php/api/csv_setCase.php');
 
 get('/dashboard' , 'php/admin/home.php');
 get('/admin/getCase' , 'php/api/admin/getCase.php');
+
+get('/admin/add-new-case' , 'php/api/admin/add-new-case.html');
+post('/admin/setCase' , 'php/api/admin/setCase.php');
+
+get('/admin/edit-new-s' , 'php/api/admin/edit-case.php');
+
 post('/admin/getCaseFilter' , 'php/api/admin/getCaseFilter.php');
 post('/admin/getCaseSearch' , 'php/api/admin/getCaseSearch.php');
 /*get('/login','auth/index.php');
