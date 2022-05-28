@@ -1,14 +1,14 @@
-<div class="p-3 bg-light w-100 border-bottom">
-    <h3>إضافة قضية جديدة</h3>
-</div>
-<div class="p-4 bg-white w-100">
-    <div class="row align-items-lg-baseline">
-        <form class="needs-validation" novalidate>
+<div class="w-100">
+    <form class="needs-validation" novalidate>
+        <div class="d-flex justify-content-between border-bottom p-3 bg-light">
+            <h3>إضافة قضية جديدة</h3>
+            <button class="btn btn-success w-25 add-new-case" type="submit">حفظ البيانات</button>
+        </div>
+        <div class="bg-white p-4">
             <div class="mb-3">
                 <label for="case-text" class="form-label">نص القضية</label>
                 <textarea required name="case_text" class="form-control" id="case-text" minlength="25"></textarea>
             </div>
-
             <div class="mb-3">
                 <label for="type" class="form-label">نوع القضية</label>
                 <select id="type" required name="type" class="form-select">
@@ -20,7 +20,6 @@
                     <option value="ندم وتفضيل">ندم وتفضيل</option>
                 </select>
             </div>
-
             <div class="mb-3">
                 <label for="cat" class="form-label">موضوع القضية</label>
                 <select id="cat" required name="cat" class="form-select group1">
@@ -37,7 +36,6 @@
                     <option value="مجتمع">مجتمع</option>
                 </select>
             </div>
-
             <div class="mb-3">
                 <label for="sub" class="form-label">موضوع القضية</label>
                 <select id="sub" name="sub" class="form-select group1">
@@ -54,7 +52,6 @@
                     <option value="مجتمع">مجتمع</option>
                 </select>
             </div>
-
             <div class="mb-3">
                 <label class="form-label mb-3">مستوى القضية</label>
                 <div class="col-12 d-flex justify-content-between">
@@ -78,10 +75,8 @@
                     </div>
                 </div>
             </div>
-
-            <button class="btn btn-dda w-75 add-new-case" type="submit">إرسال البيانات</button>
-        </form>
-    </div>
+        </div>
+    </form>
 </div>
 
 <script>
@@ -125,29 +120,5 @@
         }
         $('.needs-validation').addClass('was-validated');
     });
-
-    /*$('.add-new-case').on('click',function (){
-
-        console.log("Click")
-        const forms = document.querySelectorAll('.needs-validation')
-        // Loop over them and prevent submission
-        Array.from(forms).forEach(form => {
-            form.addEventListener(, event => {
-                if (!form.checkValidity()) {
-                    console.log("1")
-                    event.preventDefault()
-                    event.stopPropagation()
-                }else {
-                    console.log("Done...")
-                }
-
-                form.classList.add('was-validated')
-            }, false)
-        })
-
-
-
-
-    });*/
 </script>
 

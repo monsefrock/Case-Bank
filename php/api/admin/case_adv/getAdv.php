@@ -1,0 +1,61 @@
+<?php
+    require_once("{$_SERVER['DOCUMENT_ROOT']}/php/Class/Case_.php");
+    include "{$_SERVER['DOCUMENT_ROOT']}/php/api/conn.php";
+
+    if($_SERVER['REQUEST_METHOD'] === 'POST'){
+
+        if(!empty($_POST))
+        {
+            $cases = new Case_();
+
+            $result = $cases->getPoints($conn,$_POST);
+
+            if(!empty($result)){
+
+                $i = 1;
+                foreach ($result as $point)
+                {
+                    $id = $point['id'];
+                    $case_id = $point['case_id'];
+                    $titel = $point["titel"];
+                    $type = $point["type"];
+
+                    if ($type == 1){
+                        $cont_c = "ضد القضية";
+                        $color = "bg-warning";
+                    }else{
+                        $cont_c = "مع القضية";
+                        $color = "bg-primary";
+                    }
+
+                    echo '<tr>
+                            <th scope="row">'.$i.'</th>
+                            <td>
+                               '.$titel.'
+                            </td>
+                            <td>
+                                <p class="badge '.$color.' ">'.$cont_c.'</p>
+                            </td>
+                            <td>
+                                <div class="d-flex justify-content-evenly overflow-auto">
+                                    <a data-id="'.$id.'" class="edit-btn-adv btn-font btn btn-sm me-1 ">
+                                        <i class="bi bi-pencil-square"></i>
+                                    </a>
+                                    <a data-id="'.$id.'" class="delete-btn-adv btn-font btn btn-sm me-1 ">
+                                        <i class="bi bi-trash"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>';
+                }
+
+            }else{
+
+                echo "<h4>لا توجد بيانات ......</h4>";
+
+            }
+        }
+    }else{
+
+        die("مسار مسدود .......");
+    }

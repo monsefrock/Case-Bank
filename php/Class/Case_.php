@@ -117,6 +117,7 @@ class Case_
 
         return $stmt->fetchAll();
     }
+
     function getCasesAllFilter($conn,$type){
 
         $stmt = $conn->prepare("SELECT * FROM cases where case_type = '$type'");
@@ -124,6 +125,7 @@ class Case_
 
         return $stmt->fetchAll();
     }
+
     function getCasesAllSearch($conn,$search){
 
         $stmt = $conn->prepare("SELECT * FROM cases where case_text like '%$search%'");
@@ -132,9 +134,36 @@ class Case_
         return $stmt->fetchAll();
     }
 
+    function getEditCases($conn,$post){
 
+        $id = $post["case_id"];
+        $stmt = $conn->prepare("SELECT * FROM cases where id = $id");
+        $stmt->execute();
 
+        return $stmt->fetchAll();
+    }
 
+    function getPoints($conn,$post){
+
+        $id = $post["case_id"];
+        $stmt = $conn->prepare("SELECT * FROM `cases_points` where case_id = $id");
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
+
+    function setPoint($conn,$post){
+
+        $data = array($post["id"], $post["type_point"],$post["titel_point"], $post["conte_point"] );
+        $stmt = $conn->prepare("INSERT INTO `cases_points`(`case_id`, `type`, `titel`, `discription`) VALUES (?,?,?,?)");
+        if($stmt->execute($data)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    // Get Category and Sub Category and Types of all Cases in Main page (index.php)
     function getMainCat($conn)
     {
         $stmt = $conn->prepare("SELECT case_m_cat FROM cases WHERE case_m_cat != '' GROUP BY case_m_cat");
@@ -142,7 +171,6 @@ class Case_
 
         return $stmt->fetchAll();
     }
-
     function getSubCat($conn)
     {
         $stmt = $conn->prepare("SELECT case_s_cat FROM cases WHERE case_s_cat != '' GROUP BY case_s_cat");
@@ -150,7 +178,6 @@ class Case_
 
         return $stmt->fetchAll();
     }
-
     function getTypeCat($conn)
     {
         $stmt = $conn->prepare("SELECT case_type FROM cases WHERE case_type != '' GROUP BY case_type");

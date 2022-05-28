@@ -66,7 +66,12 @@
         }
         echo '<script>
         $(".edit-btn").on("click",function (){
-            $.get("/admin/edit-new-s",{},function (data,status) {
+            
+            var id = $(this).data("id");
+            
+            $.post("/admin/edit-new-s",
+            {case_id:id},
+            function (data,status) {
 
                 $(".dash-body").html(data);
 

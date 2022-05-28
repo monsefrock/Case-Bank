@@ -67,6 +67,20 @@
                             </div>
                         </div>';
                 }
+                echo '<script>
+        $(".edit-btn").on("click",function (){
+            
+            var id = $(this).data("id");
+            
+            $.post("/admin/edit-new-s",
+            {case_id:id},
+            function (data,status) {
+
+                $(".dash-body").html(data);
+
+            })
+        });
+    </script>';
             }else{
                 echo "<h3 class='text-center text-danger' dir='rtl'>لا توجد بيانات لعرضها.</h3>";
             }
