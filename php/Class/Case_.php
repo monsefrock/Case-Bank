@@ -18,6 +18,23 @@ class Case_
 
     }
 
+    function updateCase($conn,$post){
+
+        $case_text = $post["case_text"];
+        $difficulty = $post["difficulty"];
+        $cat = $post["cat"];
+        $sub = $post["sub"];
+        $case_id = $post["case_id"];
+        $type = $post["type"];
+
+        $stmt = $conn->prepare("UPDATE `cases` SET `case_text`= '$case_text',`case_m_cat`= '$cat',`case_s_cat`= '$sub',`case_type`= '$type',`case_difficulty`= '$difficulty' WHERE id = $case_id");
+        if($stmt->execute()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     function setNewCase($conn,$post){
 
         $data = array($post["case_text"], $post["cat"], $post["sub"], $post["type"], $post["difficulty"]);
@@ -152,6 +169,44 @@ class Case_
         return $stmt->fetchAll();
     }
 
+    function getPoint($conn,$post){
+
+        $id = $post["point_id"];
+        $stmt = $conn->prepare("SELECT * FROM `cases_points` where id = $id");
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
+
+    function deleltPoint($conn,$post){
+
+        $id = $post["point_id"];
+        $stmt = $conn->prepare("DELETE FROM `cases_points` WHERE id = $id");
+        if($stmt->execute()){
+
+            return true;
+
+        }else{
+
+            return false;
+        }
+
+    }
+
+    function updatePoint($conn,$post){
+
+        $type = $post["type_point"];
+        $titel = $post["titel_point"];
+        $conte = $post["conte_point"];
+        $id = $post["point_id"];
+        $stmt = $conn->prepare("UPDATE `cases_points` SET `type`= $type,`titel`= '$titel',`discription`= '$conte' WHERE `id` = $id");
+        if($stmt->execute()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     function setPoint($conn,$post){
 
         $data = array($post["id"], $post["type_point"],$post["titel_point"], $post["conte_point"] );
@@ -162,6 +217,42 @@ class Case_
             return false;
         }
     }
+
+    function getContent($conn,$post){
+
+        $id = $post["case_id"];
+        $stmt = $conn->prepare("SELECT * FROM cases_content where case_id = $id");
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
+
+    function setContent($conn,$post){
+
+        $data = array($post["case_id"],$post["content_case"]);
+        $stmt = $conn->prepare("INSERT INTO `cases_content`(`case_id`, `content`) VALUES (?, ?)");
+
+        if($stmt->execute($data)){
+            return true;
+        }else{
+            return false;
+        }
+
+    }
+
+    function updateContent($conn,$post){
+
+        $id = $post["case_id"];
+        $text = $post["content_case"];
+        $stmt = $conn->prepare("UPDATE `cases_content` SET `content`= '$text' WHERE `case_id` = $id");
+
+        if($stmt->execute()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
 
     // Get Category and Sub Category and Types of all Cases in Main page (index.php)
     function getMainCat($conn)

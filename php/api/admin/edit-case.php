@@ -53,7 +53,7 @@
         <div class="tab-content" id="pills-tabContent">
             <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
                 <div class="bg-white p-4">
-                    <input type="hidden" name="id" id="id_case" value="<?php echo $id;?>">
+                    <input type="hidden" name="case_id" id="id_case" value="<?php echo $id;?>">
                     <div class="mb-3">
                         <label for="case-text" class="form-label">نص القضية</label>
                         <textarea required name="case_text" class="form-control" id="case-text" minlength="25"><?php echo $titel;?></textarea>
@@ -156,13 +156,25 @@
             </div>
             <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
                 <div class="bg-white p-2">
+                    <?php
+                        $result1 = $cases->getContent($conn,$_POST);
 
+                        foreach ($result1 as $get_result1) {
+
+                            $content = $get_result1["content"];
+                            $flage = false;
+                        }
+                        if(empty($content)){
+                            $flage = true;
+                            $content = "لاتوجد بيانات في التمهيد.";
+                        }
+                    ?>
                     <div class="card p-2 pt-0 border-0 rounded-0 border-bottom">
                         <div class="d-flex justify-content-between p-3 pb-0 align-items-baseline">
                             <h4>تمهيد القضية</h4>
                         </div>
                         <div class="card-body">
-                            <textarea rows="8" name="content_case" class="form-control">هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسوم لأنها تعطي توزيعاَ طبيعياَ -إلى حد ما- للأحرف عوضاً عن استخدام "هنا يوجد محتوى نصي، هنا يوجد محتوى نصي" فتجعلها تبدو (أي الأحرف) وكأنها نص مقروء. العديد من برامح النشر المكتبي وبرامح تحرير صفحات الويب تستخدم لوريم إيبسوم بشكل إفتراضي كنموذج عن النص، وإذا قمت بإدخال "lorem ipsum" في أي محرك بحث ستظهر العديد من المواقع الحديثة العهد في نتائج البحث. على مدى السنين ظهرت نسخ جديدة ومختلفة من نص لوريم إيبسوم، أحياناً عن طريق الصدفة، وأحياناً عن عمد كإدخال بعض العبارات الفكاهية إليها.</textarea>
+                            <textarea rows="8" name="content_case" placeholder="<?php if($flage){ echo $content;} ?>" class="form-control"><?php if(!$flage){ echo $content;} ?></textarea>
                         </div>
                     </div>
 
@@ -183,8 +195,6 @@
                                 </tr>
                                 </thead>
                                 <tbody class="table-group-divider" id="messgtable">
-
-
                                 </tbody>
                             </table>
                         </div>
@@ -200,7 +210,7 @@
     <div class="modal-dialog modal-md">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">إضافة بيانات متقدمة</h5>
+                <h5 class="modal-title">إضافة نقاط القضية</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -250,6 +260,25 @@
     </div>
 </div>
 
+<div class="modal fade" tabindex="-1" id="exampleModal2">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">تعديل نقاط القضية</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div id="editPoint">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button close-btn" class="btn btn-secondary" data-bs-dismiss="modal">إغلاق</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
     $( document ).ready(function() {
 
@@ -278,42 +307,44 @@
         event.preventDefault();
         if ($('.needs-validation')[0].checkValidity() === false) {
             event.stopPropagation();
-        }else {
-            alert("Evriting ok...");
         }
-        /*else {
+        else {
 
             var diff = $("[name='difficulty']:checked").val();
+            var case_id = $("#id_case").val();
             var case_text = $("[name='case_text']:enabled").val();
             var type = $("[name='type']:enabled").val();
             var cat = $("[name='cat']:enabled").val();
             var sub = $("[name='sub']:enabled").val();
+            var content_case = $("[name='content_case']:enabled").val();
 
-            $.post("/admin/setCase",{
+            $.post("/admin/updateCase",{
                 case_text:case_text,
                 difficulty: diff,
                 cat: cat,
                 sub: sub,
+                case_id: case_id,
+                content_case: content_case,
                 type: type
             },function (data,status) {
 
-                if(data == "true"){
+                if(data == "1"){
 
-                    $(".dash-body").html("<div class='alert m-5 alert-success alert-dismissible fade show' role='alert'>\n" +
-                        "  <strong>نجاح </strong> عملية الإدخال" +
+                    $(".dash-mess").html("<div class='alert alert-success alert-dismissible fade show rounded-0 mb-0' role='alert'>\n" +
+                        "  <strong>نجاح </strong> عملية التحديث" +
                         "  <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>\n" +
                         "</div>");
 
-                }else {
-                    $(".dash-body").html("<div class='alert m-5 alert-danger alert-dismissible fade show' role='alert'>\n" +
-                        "  <strong>فشل </strong> عملية الإدخال" +
+                }else{
+                    $(".dash-mess").html("<div class='alert alert-danger alert-dismissible fade show rounded-0 mb-0' role='alert'>\n" +
+                        "  <strong>فشل </strong> عملية التحديث" +
                         "  <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>\n" +
                         "</div>");
                 }
 
             })
 
-        }*/
+        }
         $('.needs-validation').addClass('was-validated');
     });
 
@@ -340,8 +371,6 @@
                     if (data == 'true'){
 
                         getadvnc();
-                        alert("done");
-                        /*$('close-btn').click();*/
 
                     }else {
 
@@ -358,6 +387,7 @@
 
         $('.adv_form').addClass('was-validated');
     });
+
 
 </script>
 

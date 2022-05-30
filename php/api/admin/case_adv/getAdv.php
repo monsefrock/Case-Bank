@@ -38,7 +38,7 @@
                             </td>
                             <td>
                                 <div class="d-flex justify-content-evenly overflow-auto">
-                                    <a data-id="'.$id.'" class="edit-btn-adv btn-font btn btn-sm me-1 ">
+                                    <a data-id="'.$id.'" class="edit-btn-adv btn-font btn btn-sm me-1 " data-bs-toggle="modal" data-bs-target="#exampleModal2">
                                         <i class="bi bi-pencil-square"></i>
                                     </a>
                                     <a data-id="'.$id.'" class="delete-btn-adv btn-font btn btn-sm me-1 ">
@@ -47,6 +47,7 @@
                                 </div>
                             </td>
                         </tr>';
+                    $i++;
                 }
 
             }else{
@@ -59,3 +60,51 @@
 
         die("مسار مسدود .......");
     }
+?>
+<script>
+    $('.edit-btn-adv').click(function (event) {
+
+        var id = $(this).data("id");
+
+        $.post("/admin/getEditAdv",{
+            point_id:id
+        },function (data,status) {
+
+            $("#editPoint").html(data);
+
+        })
+
+    });
+
+    $('.delete-btn-adv').click(function (event) {
+
+        var id = $(this).data("id");
+
+        if (confirm('هل تريد حذف النقطة بالفعل؟')) {
+
+            $.post("/admin/deletPoint",{
+                point_id:id
+            },function (data,status) {
+
+                if (data == "1"){
+
+                    alert('تمت عملية الحذف بنجاح');
+                    getadvnc();
+
+                }else {
+                    $("#setMess").html(data);
+                    alert('هناك خطء في عملية الحذف ....');
+                }
+
+            })
+
+
+
+        } else {
+
+            alert('لم تتم عملية الحذف .....');
+        }
+
+
+    });
+</script>

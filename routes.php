@@ -16,10 +16,15 @@ get('/admin/getCase' , 'php/api/admin/getCase.php');
 
 get('/admin/add-new-case' , 'php/api/admin/add-new-case.html');
 post('/admin/setCase' , 'php/api/admin/setCase.php');
+post('/admin/updateCase' , 'php/api/admin/updateCase.php');
 
 post('/admin/edit-new-s' , 'php/api/admin/edit-case.php');
 post('/admin/getAdv' , 'php/api/admin/case_adv/getAdv.php');
 post('/admin/setPoint' , 'php/api/admin/case_adv/setPoint.php');
+
+post('/admin/getEditAdv' , 'php/api/admin/case_adv/getEditPoint.php');
+post('/admin/deletPoint' , 'php/api/admin/case_adv/deletPoint.php');
+post('/admin/updatePoint' , 'php/api/admin/case_adv/updatePoint.php');
 
 post('/admin/getCaseFilter' , 'php/api/admin/getCaseFilter.php');
 post('/admin/getCaseSearch' , 'php/api/admin/getCaseSearch.php');
