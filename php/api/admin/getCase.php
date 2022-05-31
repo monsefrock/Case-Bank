@@ -77,6 +77,54 @@
 
             })
         });
+        
+        $(".show").on("click",function (){
+            
+            var id = $(this).data("id");
+            
+            $.post("/admin/showCase",
+            {case_id:id},
+            function (data,status) {
+
+                $(".dash-body").html(data);
+
+            })
+        });
+        
+        $(".delete").click(function (event) {
+
+        var id = $(this).data("id");
+
+        if (confirm("هل تريد حذف النقطة بالفعل؟")) {
+
+            $.post("/admin/deleteCase",{
+                case_id:id
+            },function (data,status) {
+
+                if (data == "1"){
+                    
+                    getCases();
+                    alert("تمت عملية الحذف بنجاح");
+                    clearSpase();
+
+                }else {
+                    
+                    $("#dash-mess").html(data);
+                    alert("هناك خطء في عملية الحذف ....");
+                }
+
+            })
+
+
+
+        } else {
+
+            alert("لم تتم عملية الحذف .....");
+        }
+
+
+    });
+        
     </script>';
     }else{
         echo "<h3 class='text-center text-danger' dir='rtl'>لا توجد بيانات لعرضها.</h3>";

@@ -165,13 +165,23 @@ $cases = new Case_();
 
     $( document ).ready(function() {
 
+        getCases();
+
+    });
+
+    function getCases(){
+
         $.get("/admin/getCase",{},function (data,status) {
 
             $("#cases_get").html(data);
 
         })
+    }
 
-    });
+    function clearSpase(){
+
+        $(".dash-body").html("");
+    }
 
     $('.add-new-case').on('click',function (){
 

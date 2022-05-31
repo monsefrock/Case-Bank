@@ -35,6 +35,17 @@ class Case_
         }
     }
 
+    function deleteCase($conn,$post){
+        $case_id = $post["case_id"];
+
+        $stmt = $conn->prepare("DELETE FROM `cases` WHERE id = $case_id");
+        if($stmt->execute()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     function setNewCase($conn,$post){
 
         $data = array($post["case_text"], $post["cat"], $post["sub"], $post["type"], $post["difficulty"]);
@@ -193,6 +204,21 @@ class Case_
 
     }
 
+    function deleltPointWithCase($conn,$post){
+
+        $id = $post["case_id"];
+        $stmt = $conn->prepare("DELETE FROM `cases_points` WHERE case_id = $id");
+        if($stmt->execute()){
+
+            return true;
+
+        }else{
+
+            return false;
+        }
+
+    }
+
     function updatePoint($conn,$post){
 
         $type = $post["type_point"];
@@ -251,6 +277,21 @@ class Case_
         }else{
             return false;
         }
+    }
+
+    function deleteContent($conn,$post){
+
+        $id = $post["case_id"];
+        $stmt = $conn->prepare("DELETE FROM `cases_content` WHERE `case_id` =  $id");
+        if($stmt->execute()){
+
+            return true;
+
+        }else{
+
+            return false;
+        }
+
     }
 
 

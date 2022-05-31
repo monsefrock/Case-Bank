@@ -18,6 +18,10 @@ get('/admin/add-new-case' , 'php/api/admin/add-new-case.html');
 post('/admin/setCase' , 'php/api/admin/setCase.php');
 post('/admin/updateCase' , 'php/api/admin/updateCase.php');
 
+post('/admin/deleteCase' , 'php/api/admin/deleteCase.php');
+
+post('/admin/showCase' , 'php/api/admin/showCase.php');
+
 post('/admin/edit-new-s' , 'php/api/admin/edit-case.php');
 post('/admin/getAdv' , 'php/api/admin/case_adv/getAdv.php');
 post('/admin/setPoint' , 'php/api/admin/case_adv/setPoint.php');
