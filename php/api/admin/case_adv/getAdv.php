@@ -21,10 +21,10 @@
                     $type = $point["type"];
 
                     if ($type == 1){
-                        $cont_c = "ضد القضية";
+                        $cont_c = "حجة موالاة";
                         $color = "bg-warning";
                     }else{
-                        $cont_c = "مع القضية";
+                        $cont_c = "حجة معارضة";
                         $color = "bg-primary";
                     }
 

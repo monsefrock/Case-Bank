@@ -31,11 +31,7 @@ class User
 
        $stmt = $conn->prepare("SELECT * FROM users where $id");
        $stmt->execute();
-       $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
-
-       $stmt->close();
-       $conn->close();
-       return $result;
+       return $stmt->fetchAll();
    }
 
    function deletUser($conn,$id){

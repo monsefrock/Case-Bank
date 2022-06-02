@@ -41,7 +41,7 @@
                     }
 
                     echo '<div class="col-12 border-end border-3 '.$css.'">
-                            <div class="row">
+                            <div class="show row" data-id="'.$mainCat["id"].'">
                                 <div class="col-12 p-2 pb-0 mb-1">
                                     <p class="text-justify">
                                         '.$mainCat["case_text"].'
@@ -59,9 +59,6 @@
                                     </button>
                                     <button data-id="'.$mainCat["id"].'" class="delete btn-font btn btn-light btn-sm me-1 ">
                                         <i class="bi bi-trash"></i>
-                                    </button>
-                                    <button data-id="'.$mainCat["id"].'" class="show btn-font btn btn-light btn-sm">
-                                        <i class="bi bi-easel2-fill"></i>
                                     </button>
                                 </div>
                             </div>

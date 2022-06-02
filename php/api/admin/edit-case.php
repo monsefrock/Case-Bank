@@ -180,7 +180,7 @@
 
                     <div class="card p-2 mt-2 border-0 rounded-0">
                         <div class="d-flex justify-content-between p-3 align-items-baseline">
-                            <h4>جدول البيانات المتقدمة</h4>
+                            <h4>جدول الحجج</h4>
                             <a class="btn btn-dda w-25 btn-sm add-new-advance" data-bs-toggle="modal" data-bs-target="#exampleModal">إضافة </a>
                         </div>
 
@@ -231,9 +231,9 @@
                         <label for="inputEmail4" class="col-sm-2 col-form-label">العنوان</label>
                         <div class="col-sm-10">
                             <select required id="inputEmail4" name="type_point" class="form-select">
-                                <option selected disabled value="">الرجاء إختيار نوع المحتوى</option>
-                                <option value="0">مع القضية</option>
-                                <option value="1">ضد القضية</option>
+                                <option selected disabled value=''>الرجاء إختيار نوع الحجة</option>
+                                <option value="0">حجة موالاة</option>
+                                <option value="1">حجة معارضة</option>
                             </select>
                             <div class="invalid-feedback">
                                 الرجاء إختيار أحد الخيارة

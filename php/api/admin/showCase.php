@@ -36,13 +36,13 @@
 ?>
 <div class="p-3 bg-light w-100">
     <div class="row align-items-lg-baseline">
-        <div class="col-8">
-            <p class="<?php echo $css;?> w-25 text-white p-3 text-center rounded-3"><?php echo $case["case_type"];?></p>
+        <div class="col-6">
+            <p class="<?php echo $css;?> w-50 text-white p-3 text-center rounded-3"><?php echo $case["case_type"];?></p>
         </div>
-        <div class="col-4 d-flex justify-content-end">
+        <div class="col-6 d-flex justify-content-end">
             <p class="w-25 bg-orange p-1 rounded-1 text-white text-center me-2"><?php echo $case["case_m_cat"];?></p>
             <p class="w-25 bg-orange p-1 rounded-1 text-white text-center me-2"><?php echo $case["case_s_cat"];?></p>
-            <p class="w-25 bg-light shadow p-1 rounded-1 text-center"><?php echo $case["case_difficulty"];?></p>
+            <p class="w-25 border shadow p-1 rounded-1 text-center"><?php echo $case["case_difficulty"];?></p>
         </div>
     </div>
 </div>
@@ -63,13 +63,13 @@
         ?>
     </p>
 </div>
-<div class="p-3 bg-white w-100">
+<div class="p-3 bg-white w-100 mb-4">
     <ul class="nav nav-tabs mb-3" id="pills-tab" role="tablist">
     <li class="nav-item" role="presentation">
-    <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">نقاط مع المقولة</button>
+    <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">حجج موالاة</button>
     </li>
     <li class="nav-item" role="presentation">
-    <button class="nav-link " id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">نقاط ضد المقولة</button>
+    <button class="nav-link " id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">حجج معارضة</button>
     </li>
     </ul>
     <div class="tab-content" id="pills-tabContent">

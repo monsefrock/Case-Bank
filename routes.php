@@ -12,6 +12,8 @@ post('/logCase','php/api/logCase.php');
 get('/csvSet' , 'php/api/csv_setCase.php');
 
 get('/dashboard' , 'php/admin/home.php');
+get('/users' , 'php/admin/users.php');
+
 get('/admin/getCase' , 'php/api/admin/getCase.php');
 
 get('/admin/add-new-case' , 'php/api/admin/add-new-case.html');
@@ -32,6 +34,8 @@ post('/admin/updatePoint' , 'php/api/admin/case_adv/updatePoint.php');
 
 post('/admin/getCaseFilter' , 'php/api/admin/getCaseFilter.php');
 post('/admin/getCaseSearch' , 'php/api/admin/getCaseSearch.php');
+
+get('/auth/login' , 'php/api/login/login.php');
 /*get('/login','auth/index.php');
 get('/register','auth/register.php');
 

@@ -36,11 +36,11 @@
             <select required id="inputEmail4" name="u_type_point" class="form-select">
                 <?php
                 if(empty($type)){
-                    echo "<option selected disabled value=''>الرجاء إختيار نوع المحتوى</option>";
+                    echo "<option selected disabled value=''>الرجاء إختيار نوع الحجة</option>";
                 }
                 ?>
-                <option value="0">مع القضية</option>
-                <option value="1">ضد القضية</option>
+                <option value="0">حجة موالاة</option>
+                <option value="1">حجة معارضة</option>
             </select>
             <div class="invalid-feedback">
                 الرجاء إختيار أحد الخيارة
