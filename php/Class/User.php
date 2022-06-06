@@ -8,39 +8,93 @@ class User
    public $profile_pic;
    public $type;
 
-    function __construct($name,$email,$password,$type,$profile_pic) {
+    /*function __construct($name,$email,$password,$type,$profile_pic) {
         $this->name = $name;
         $this->email = $email;
         $this->password = $password;
         $this->type = $type;
         $this->profile_pic = $profile_pic;
-    }
+    }*/
 
-   function setUser($conn){
+   function setUser($conn,$post,$password){
 
-       $stmt = $conn->prepare("INSERT INTO users (name, email, password, profile_pic, type) VALUES (?, ?, ?, ?, ?, ?)");
-       $stmt->bind_param("ssssi", $this->name, $this->email,$this->password,$this->profile_pic,$this->type);
-       $stmt->execute();
+       $data = array($post['name'],$post['email'],$password,1);
+       $stmt = $conn->prepare("INSERT INTO users (name, email, password, state) VALUES (?, ?, ?, ?)");
 
-       $stmt->close();
-       $conn->close();
+       if($stmt->execute($data)){
+           return true;
+       }else{
+           return false;
+       }
+
 
    }
 
-   function getUser($conn,$id){
+   function editUser($conn,$post){
 
-       $stmt = $conn->prepare("SELECT * FROM users where $id");
+       $id = $post["id"];
+       $name = $post["name"];
+       $state = $post["state"];
+       $stmt = $conn->prepare("UPDATE `users` SET `name`= '$name' ,`state`= $state  WHERE `id` = $id");
+
+       if($stmt->execute()){
+           return true;
+       }else{
+           return false;
+       }
+
+
+   }
+   function editPass($conn,$post,$password){
+
+       $id = $post["id"];
+       $stmt = $conn->prepare("UPDATE `users` SET `password`= '$password' WHERE `id` = $id");
+
+       if($stmt->execute()){
+           return true;
+       }else{
+           return false;
+       }
+
+
+   }
+
+   function getUser($conn,$email){
+
+       $stmt = $conn->prepare("SELECT * FROM users where email = '$email' and state != 0 LIMIT 1");
        $stmt->execute();
        return $stmt->fetchAll();
    }
 
-   function deletUser($conn,$id){
-       $stmt = $conn->prepare("DELETE FROM users WHERE id = ?;");
-       $stmt->bind_param("i",$id);
-       $stmt->execute();
+   function getUser_($conn,$id){
 
-       $stmt->close();
-       $conn->close();
+       $stmt = $conn->prepare("SELECT * FROM users where id = $id");
+       $stmt->execute();
+       return $stmt->fetchAll();
+   }
+
+    function getUsers($conn){
+
+        $stmt = $conn->prepare("SELECT * FROM users");
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
+
+   function deletUser($conn,$id){
+       $stmt = $conn->prepare("DELETE FROM users WHERE id = $id");
+       if($stmt->execute()){
+           return true;
+       }else{
+           return false;
+       }
+   }
+
+   function getCount($conn){
+
+       $stmt = $conn->prepare("SELECT COUNT(id) as nm FROM `users`");
+       $stmt->execute();
+       return $stmt->fetchAll();
+
    }
 
 }

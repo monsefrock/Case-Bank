@@ -1,8 +1,12 @@
 <?php
+if (!isset($_SESSION['loggedin']) and $_SESSION['loggedin'] != TRUE){
+    header("location: /login");
+    die("not loggedin");
+}
+
 require_once("{$_SERVER['DOCUMENT_ROOT']}\php\Class\Case_.php");
 require_once ("{$_SERVER['DOCUMENT_ROOT']}\php\api\conn.php");
 
-$cases = new Case_();
 ?>
 <!DOCTYPE html>
 <html lang="ar">
@@ -38,7 +42,7 @@ $cases = new Case_();
                         </div>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                             <li>
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="/logout">
                                     <i class="bi bi-box-arrow-right"></i>
                                     تسجيل الخروج
                                 </a>
@@ -48,7 +52,7 @@ $cases = new Case_();
                 </div>
                 <ul class="navbar-nav">
                     <li class="nav-item p-2">
-                        <a class="nav-link" aria-current="page" href="#">المستخدمين</a>
+                        <a class="nav-link" aria-current="page" href="/dashboard/users">المستخدمين</a>
                     </li>
                     <li class="nav-item p-2 ">
                         <a id="getCasesbtn" class="nav-link" href="/dashboard">القضايا</a>
@@ -85,7 +89,7 @@ $cases = new Case_();
                         </div>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                             <li>
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="/logout">
                                     <i class="bi bi-box-arrow-right"></i>
                                     تسجيل الخروج
                                 </a>
@@ -104,7 +108,7 @@ $cases = new Case_();
                 <div class="navbar-nav" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item p-2 border-bottom">
-                            <a class="nav-link" aria-current="page" href="#">المستخدمين</a>
+                            <a class="nav-link" aria-current="page" href="/dashboard/users">المستخدمين</a>
                         </li>
                         <li class="nav-item p-2 border-bottom">
                             <a id="getCasesbtn" class="nav-link" href="/dashboard">القضايا</a>
@@ -119,10 +123,9 @@ $cases = new Case_();
         </div>
         <div class="col-xl-3 col-4  bg-white border-end">
 
-
-            <div class="row ex3">
+            <div class="row ex3 users">
                 <div class="col-12 ps-5 pe-5 border-bottom">
-                    <div class="show row" data-id="">
+                    <div class="show row " data-id="">
                         <div class="col-12 ps-0 p-3 mb-0 mt-0 d-flex justify-content-between align-items-center">
                             <span class="p-3 me-5 ms-0 rounded-1 bg-blue" style="font-size: 3rem; color: #ffffff;">
                                 <i class="bi bi-person-badge-fill"></i>
@@ -147,37 +150,15 @@ $cases = new Case_();
                         </div>
                     </div>
                 </div>
-                <div class="col-12 ps-5 pe-5 border-bottom">
-                    <div class="show row" data-id="">
-                        <div class="col-12 ps-0 p-3 mb-0 mt-0 d-flex justify-content-between align-items-center">
-                            <span class="p-3 me-5 ms-0 rounded-pill bg-blue" style="font-size: 3rem; color: #ffffff;">
-                                <i class="bi bi-person-badge-fill"></i>
-                            </span>
-                            <div class=" w-100 ps-2 pe-4 pt-1" >
-                                <p class="">
-                                    منصف الإدريسي
-                                </p>
-
-                                <div  class="d-flex justify-content-between align-items-baseline">
-                                    <p class="badge bg-orange text-end">
-                                        مفعل
-                                    </p>
-                                    <button data-id="" class="edit-btn btn-font btn btn-light btn-sm me-1">
-                                        <i class="bi bi-pencil-square"></i>
-                                    </button>
-                                    <button data-id="" class="delete btn-font btn btn-light btn-sm me-1">
-                                        <i class="bi bi-trash"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
         <div class="col-8 col-xl-7 container-fluid p-0 bg-white">
             <div class="dash-mess"></div>
-            <div class="dash-body"></div>
+            <div class="dash-body">
+                <?php
+
+                ?>
+            </div>
         </div>
     </div>
 </section>
@@ -192,16 +173,24 @@ $cases = new Case_();
     $( document ).ready(function() {
 
         console.log("Page Open...");
+        getUsers();
 
     });
+    function getUsers(){
 
+        $.get("/admin/getUsers",{},function (data,status) {
+
+            $(".users").html(data);
+
+        })
+    }
 
     function clearSpase(){
 
         $(".dash-body").html("");
     }
 
-    $('.add-new-case').on('click',function (){
+    $('.add-new-user').on('click',function (){
 
         $.get("/admin/add-new-user",{},function (data,status) {
 

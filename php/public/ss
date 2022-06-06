@@ -481,7 +481,63 @@ if(!empty($_POST)){
 
 
 
+<?php
+    /*var_dump(session_start());*/
 
+    require_once("{$_SERVER['DOCUMENT_ROOT']}\php\Class\User.php");
+    require_once("{$_SERVER['DOCUMENT_ROOT']}\php\Class\PasswordHash.php");
+    include "{$_SERVER['DOCUMENT_ROOT']}\php\api\conn.php";
+
+
+
+    if($_SERVER['REQUEST_METHOD'] === 'POST'){
+
+        if(!empty($_POST))
+        {
+            $user = new User();
+
+            $password = $_POST['password'];
+
+            $passw = new PasswordHash(8,"TRUE");
+            $pas = $passw->HashPassword($password);
+
+            $email = $_POST["email"];
+            $result = $user->getUser($conn,$email);
+
+
+            foreach ($result as $use){
+
+                if($passw->CheckPassword($pas,'$P$DGa2A72dNVh0/Z0Q3Iav0C/4gkaZwT0')){
+
+                   /* $_SESSION["name"] = $use["name"];
+                    $_SESSION["user_id"] = $use["id"];*/
+
+                    # GJfbnHXLxCm0
+
+                    # $P$DGa2A72dNVh0/Z0Q3Iav0C/4gkaZwT0
+                    echo 'true';
+                }
+                else{
+                    var_dump($result);
+                    echo 'false';
+                }
+
+            }
+
+        }
+        {
+            echo "Post empty";
+        }
+    }
+
+
+/*if($passw->CheckPassword("4480644Mon",$y)){
+
+    echo "TRUE";
+}*/
+
+
+?>
 
 
 

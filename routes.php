@@ -12,7 +12,7 @@ post('/logCase','php/api/logCase.php');
 get('/csvSet' , 'php/api/csv_setCase.php');
 
 get('/dashboard' , 'php/admin/home.php');
-get('/users' , 'php/admin/users.php');
+get('/dashboard/users' , 'php/admin/users.php');
 
 get('/admin/getCase' , 'php/api/admin/getCase.php');
 
@@ -35,12 +35,21 @@ post('/admin/updatePoint' , 'php/api/admin/case_adv/updatePoint.php');
 post('/admin/getCaseFilter' , 'php/api/admin/getCaseFilter.php');
 post('/admin/getCaseSearch' , 'php/api/admin/getCaseSearch.php');
 
-get('/auth/login' , 'php/api/login/login.php');
+get('/admin/add-new-user' , 'php/api/login/new-user.html');
+post('/admin/deleteUser' , 'php/api/deleteUser.php');
+post('/admin/edit-user' , 'php/api/login/edit-user.php');
+get('/admin/getUsers' , 'php/api/getUsers.php');
+post('/api/editUser' , 'php/api/editUser.php');
+post('/api/newUser' , 'php/api/login/newUser.php');
+post('/api/login' , 'php/api/login/login.php');
+
+get('/logout' , 'php/api/logout.php');
+
 /*get('/login','auth/index.php');
 get('/register','auth/register.php');
 
 
-post('/api/login','auth/api/login.php');
+post('/api/login','auth/api/newUser.php');
 post('/api/register','auth/api/register.php');
 post('/api/email','auth/api/email.php');*/
 

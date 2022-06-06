@@ -1,7 +1,10 @@
 <?php
+if (!isset($_SESSION['loggedin']) and $_SESSION['loggedin'] != TRUE){
+    header("location: /login");
+    die("not loggedin");
+}
 require_once("{$_SERVER['DOCUMENT_ROOT']}\php\Class\Case_.php");
 require_once ("{$_SERVER['DOCUMENT_ROOT']}\php\api\conn.php");
-
 $cases = new Case_();
 ?>
 <!DOCTYPE html>
@@ -38,7 +41,7 @@ $cases = new Case_();
                             </div>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                 <li>
-                                    <a class="dropdown-item" href="#">
+                                    <a class="dropdown-item" href="/logout">
                                         <i class="bi bi-box-arrow-right"></i>
                                         تسجيل الخروج
                                     </a>
@@ -48,7 +51,7 @@ $cases = new Case_();
                     </div>
                     <ul class="navbar-nav">
                         <li class="nav-item p-2">
-                            <a class="nav-link" aria-current="page" href="#">المستخدمين</a>
+                            <a class="nav-link" aria-current="page" href="/dashboard/users">المستخدمين</a>
                         </li>
                         <li class="nav-item p-2 ">
                             <a id="getCasesbtn" class="nav-link" href="/dashboard">القضايا</a>
@@ -85,7 +88,7 @@ $cases = new Case_();
                             </div>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                 <li>
-                                    <a class="dropdown-item" href="#">
+                                    <a class="dropdown-item" href="/logout">
                                         <i class="bi bi-box-arrow-right"></i>
                                         تسجيل الخروج
                                     </a>
@@ -104,7 +107,7 @@ $cases = new Case_();
                     <div class="navbar-nav" id="navbarNav">
                         <ul class="navbar-nav">
                             <li class="nav-item p-2 border-bottom">
-                                <a class="nav-link" aria-current="page" href="#">المستخدمين</a>
+                                <a class="nav-link" aria-current="page" href="/dashboard/users">المستخدمين</a>
                             </li>
                             <li class="nav-item p-2 border-bottom">
                                 <a id="getCasesbtn" class="nav-link" href="/dashboard">القضايا</a>
