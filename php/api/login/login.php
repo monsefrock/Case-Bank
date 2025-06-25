@@ -12,42 +12,34 @@ else{
 
 }
 
+use App\Models\UserModel;
+
 if ($_SERVER["REQUEST_METHOD"] == "POST")
 {
-    require_once("{$_SERVER['DOCUMENT_ROOT']}/php/Class/User.php");
+    require_once("{$_SERVER['DOCUMENT_ROOT']}/php/bootstrap.php");
     require_once("{$_SERVER['DOCUMENT_ROOT']}/php/Class/PasswordHash.php");
     include "{$_SERVER['DOCUMENT_ROOT']}/php/api/conn.php";
 
 
     if(isset($_POST['password']) && isset($_POST['username']))
     {
-        $user_ = new User();
-        $pass =$_POST['password'];
-        $user =$_POST['username'];
+        $pass = $_POST['password'];
+        $user = $_POST['username'];
 
-        $result = $user_->getUser($conn,$user);
+        $result = UserModel::where('email', $user)->where('state', '!=', 0)->first();
 
-        if (!empty($result))
+        if ($result)
         {
-            // output data of each row
             $passw = new PasswordHash(8,FALSE);
 
-            foreach ($result as $use){
-
-                $password = $use["password"];
-                $state = $use["state"];
-            }
+            $password = $result->password;
+            $state = $result->state;
 
             $virefy =  $passw->CheckPassword($pass,$password);
 
             if ($virefy && $state == 1) {
-
-                foreach ($result as $use){
-
-                    $name = $use["name"];
-                    $id = $use["id"];
-
-                }
+                $name = $result->name;
+                $id = $result->id;
 
                 $_SESSION['loggedin'] = true;
                 $_SESSION['name'] = $name;

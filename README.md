@@ -27,3 +27,13 @@ For existing databases run the migration in `sql/migrations/add_state_column.sql
 ```sh
 mysql -u <user> -p < database_name > < sql/migrations/add_state_column.sql
 ```
+
+## Setup Eloquent ORM
+
+This project now uses the Eloquent ORM for database access. After cloning the repository, install the PHP dependencies via Composer:
+
+```sh
+composer install
+```
+
+The database connection is configured in `php/bootstrap.php` and uses the same settings as the legacy `pdo` connection.
