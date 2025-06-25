@@ -1,61 +1,42 @@
 <?php
-    require_once("{$_SERVER['DOCUMENT_ROOT']}/php/Class/Case_.php");
-    include "{$_SERVER['DOCUMENT_ROOT']}/php/api/conn.php";
+require_once("{$_SERVER['DOCUMENT_ROOT']}/php/bootstrap.php");
+use App\Models\CaseModel;
 
-    if($_SERVER['REQUEST_METHOD'] === 'POST'){
-
-        if(!empty($_POST))
-        {
-            $cases = new Case_();
-
-            $result = $cases->updateCase($conn,$_POST);
-
-            if ($result){
-
-                if(!empty($_POST["content_case"])){
-
-                    $content = $cases->getContent($conn,$_POST);
-
-                    if(empty($content)){
-
-                        //set
-                        $result = $cases->setContent($conn,$_POST);
-                        if ($result){
-
-                            echo "1";
-                        }
-                        else
-                        {
-                            echo "0";
-                        }
-
+if($_SERVER['REQUEST_METHOD'] === 'POST'){
+    if(!empty($_POST))
+    {
+        $result = CaseModel::updateCaseData($_POST);
+        if ($result){
+            if(!empty($_POST["content_case"])){
+                $content = CaseModel::getContent($_POST['case_id']);
+                if(empty($content)){
+                    $result = CaseModel::setContent($_POST);
+                    if ($result){
+                        echo "1";
                     }
-
                     else
                     {
-
-                        //update
-                        $result = $cases->updateContent($conn,$_POST);
-
-                        if ($result){
-                            echo "1";
-                        }
-                        else
-                        {
-                            echo "0";
-                        }
+                        echo "0";
                     }
-                }else{
-                    echo '1';
                 }
-
-
-            }
-            else
-            {
-
-                echo "0";
-
+                else
+                {
+                    $result = CaseModel::updateContent($_POST);
+                    if ($result){
+                        echo "1";
+                    }
+                    else
+                    {
+                        echo "0";
+                    }
+                }
+            }else{
+                echo '1';
             }
         }
+        else
+        {
+            echo "0";
+        }
     }
+}

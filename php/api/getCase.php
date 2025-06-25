@@ -1,6 +1,6 @@
 <?php
-    require_once("{$_SERVER['DOCUMENT_ROOT']}/php/Class/Case_.php");
-    include "conn.php";
+    require_once("{$_SERVER['DOCUMENT_ROOT']}/php/bootstrap.php");
+    use App\Models\CaseModel;
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -39,22 +39,22 @@
 
             if($cat == 'disabled' and $sub == 'disabled'){
 
-                getFirst($conn ,$type, $difficulty);
+                getFirst($type, $difficulty);
 
             }
             elseif ($cat != 'disabled' and $sub == 'disabled'){
 
-                getSacand($conn ,$type, $cat, $difficulty);
+                getSacand($type, $cat, $difficulty);
 
             }
             elseif ($cat != 'disabled' and $sub != 'disabled'){
 
-                geTarthe($conn ,$type, $cat, $sub, $difficulty);
+                geTarthe($type, $cat, $sub, $difficulty);
 
             }
             elseif ($cat != 'disabled' and $sub != 'disabled' and $difficulty != 'disabled'){
 
-                getAll($conn ,$type, $cat, $sub, $difficulty);
+                getAll($type, $cat, $sub, $difficulty);
 
             }
             else{
@@ -79,14 +79,13 @@
         exit();
     }
 
-    function getFirst($conn, $type, $difficulty){
+    function getFirst($type, $difficulty){
 
         $icon = 'bg-primary';
         $css = '#97abc6';
 
-        $cases = new Case_();
 
-        $result = $cases->getCaseRand($conn,$type,$difficulty);
+        $result = CaseModel::getCaseRand($type, $difficulty);
 
         if(!empty($result))
         {
@@ -145,14 +144,13 @@
         }
     }
 
-    function getSacand($conn, $type, $cat, $difficulty){
+    function getSacand($type, $cat, $difficulty){
 
         $icon = 'bg-primary';
         $css = '#97abc6';
 
-        $cases = new Case_();
 
-        $result = $cases->getCaseM($conn,$type,$cat,$difficulty);
+        $result = CaseModel::getCaseM($type, $cat, $difficulty);
 
         if(!empty($result))
         {
@@ -212,14 +210,13 @@
 
     }
 
-    function geTarthe($conn, $type, $cat, $sub, $difficulty){
+    function geTarthe($type, $cat, $sub, $difficulty){
 
         $icon = 'bg-primary';
         $css = '#97abc6';
 
-        $cases = new Case_();
 
-        $result = $cases->getCaseS($conn, $type, $cat, $sub,$difficulty);
+        $result = CaseModel::getCaseS($type, $cat, $sub, $difficulty);
 
         if(!empty($result))
         {
@@ -279,14 +276,13 @@
 
     }
 
-    function getAll($conn, $type, $cat, $sub, $difficulty){
+    function getAll($type, $cat, $sub, $difficulty){
 
         $icon = 'bg-primary';
         $css = '#97abc6';
 
-        $cases = new Case_();
 
-        $result = $cases->getAll($conn, $type, $cat, $sub, $difficulty);
+        $result = CaseModel::getAllCases($type, $cat, $sub, $difficulty);
 
         if(!empty($result))
         {

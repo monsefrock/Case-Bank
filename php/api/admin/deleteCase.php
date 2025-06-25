@@ -1,25 +1,18 @@
 <?php
-    require_once("{$_SERVER['DOCUMENT_ROOT']}/php/Class/Case_.php");
-    include "{$_SERVER['DOCUMENT_ROOT']}/php/api/conn.php";
+require_once("{$_SERVER['DOCUMENT_ROOT']}/php/bootstrap.php");
+use App\Models\CaseModel;
 
-    if($_SERVER['REQUEST_METHOD'] === 'POST'){
-
-        if(!empty($_POST))
-        {
-            $cases = new Case_();
-
-            $result2 = $cases->deleteContent($conn,$_POST);
-            $result1 = $cases->deleltPointWithCase($conn,$_POST);
-            $result = $cases->deleteCase($conn,$_POST);
-
-            if($result && $result1 && $result2){
-
-                echo $result;
-
-            }else{
-
-                echo '0';
-            }
-
+if($_SERVER['REQUEST_METHOD'] === 'POST'){
+    if(!empty($_POST))
+    {
+        $caseId = $_POST['case_id'];
+        $result2 = CaseModel::deleteContent($caseId);
+        $result1 = CaseModel::deletePointWithCase($caseId);
+        $result = CaseModel::deleteCaseById($caseId);
+        if($result && $result1 && $result2){
+            echo $result;
+        }else{
+            echo '0';
         }
     }
+}
