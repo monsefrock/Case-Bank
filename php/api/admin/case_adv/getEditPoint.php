@@ -1,24 +1,19 @@
 <?php
-    require_once("{$_SERVER['DOCUMENT_ROOT']}/php/Class/Case_.php");
-    include "{$_SERVER['DOCUMENT_ROOT']}/php/api/conn.php";
+require_once("{$_SERVER['DOCUMENT_ROOT']}/php/bootstrap.php");
+use App\Models\CaseModel;
 
-    if($_SERVER['REQUEST_METHOD'] === 'POST')
-    {
-        $cases = new Case_();
-
-        $result = $cases->getPoint($conn,$_POST);
-
-        foreach ($result as $get_result) {
-            $id = $get_result["id"];
-            $titel = $get_result["titel"];
-            $type = $get_result["type"];
-            $content = $get_result["discription"];
-        }
-
+if($_SERVER['REQUEST_METHOD'] === 'POST')
+{
+    $result = CaseModel::getPoint($_POST['point_id']);
+    foreach ($result as $get_result) {
+        $id = $get_result["id"];
+        $titel = $get_result["titel"];
+        $type = $get_result["type"];
+        $content = $get_result["discription"];
     }
+}
 ?>
 <form class="adv_form_update" novalidate>
-
     <div id="up_setMess"></div>
     <input type="hidden" name="u_point_id" value="<?php echo $id;?>">
     <div class="row mb-3">
@@ -61,48 +56,37 @@
 </form>
 <script>
     $( document ).ready(function() {
-
         $("#inputEmail4 option[value='<?php echo $type;?>']").attr("selected","selected");
-
     });
-
     $('.adv_form_update').submit(function (event) {
         event.preventDefault();
         if ($('.adv_form_update')[0].checkValidity() === false) {
             event.stopPropagation();
         }else {
-
             var id = $("[name='u_point_id']:enabled").val();
             var titel_point = $("[name='u_titel_point']:enabled").val();
             var type_point = $("[name='u_type_point']:enabled").val();
             var conte_point = $("[name='u_conte_point']:enabled").val();
-
             $.post("/admin/updatePoint",{
                 titel_point:titel_point,
                 type_point: type_point,
                 conte_point: conte_point,
                 point_id: id
             },function (data,status) {
-
                 if (data == '1'){
-
                     getadvnc();
                     $("#up_setMess").html("<div class='alert alert-success alert-dismissible fade show' role='alert'>\n" +
                         "  <strong>تمت </strong> عملية التعديل" +
                         "  <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>\n" +
                         "</div>");
-
                 }else {
-
                     $("#up_setMess").html("<div class='alert alert-danger alert-dismissible fade show' role='alert'>\n" +
                         "  <strong>فشل </strong> عملية التعديل" +
                         "  <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>\n" +
                         "</div>");
-
                 }
             })
         }
-
         $('.adv_form_update').addClass('was-validated');
     });
 </script>

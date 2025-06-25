@@ -1,10 +1,9 @@
 <?php
-    require_once("{$_SERVER['DOCUMENT_ROOT']}/php/Class/Case_.php");
-    include "{$_SERVER['DOCUMENT_ROOT']}/php/api/conn.php";
+    require_once("{$_SERVER['DOCUMENT_ROOT']}/php/bootstrap.php");
+    use App\Models\CaseModel;
 
-    $cases = new Case_();
 
-    $result = $cases->getEditCases($conn,$_POST);
+    $result = CaseModel::getEditCases($_POST['case_id']);
 
     if(!empty($result)){
         foreach ($result as $case) {
@@ -54,7 +53,7 @@
 <div class="p-3 bg-white w-100">
     <p class="text-justify lh-base">
         <?php
-        $result1 = $cases->getContent($conn,$_POST);
+        $result1 = CaseModel::getContent($_POST['case_id']);
         if(!empty($result1)){
             foreach ($result1 as $content) {
                 echo $content["content"];
@@ -77,7 +76,7 @@
 
             <div class="accordion" id="accordionExample">
                 <?php
-                $result3 = $cases->getPoints($conn,$_POST);
+                $result3 = CaseModel::getPoints($_POST['case_id']);
                 if(!empty($result3)){
                     $i = 1;
                     foreach ($result3 as $pointes) {

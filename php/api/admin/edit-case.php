@@ -16,15 +16,14 @@
         </div>
 
         <?php
-            require_once("{$_SERVER['DOCUMENT_ROOT']}/php/Class/Case_.php");
-            include "{$_SERVER['DOCUMENT_ROOT']}/php/api/conn.php";
+            require_once("{$_SERVER['DOCUMENT_ROOT']}/php/bootstrap.php");
 
+            use App\Models\CaseModel;
             if($_SERVER['REQUEST_METHOD'] === 'POST')
             {
 
-                $cases = new Case_();
 
-                $result = $cases->getEditCases($conn,$_POST);
+                $result = CaseModel::getEditCases($_POST['case_id']);
 
                 foreach ($result as $get_result) {
                     $id = $get_result["id"];
@@ -157,7 +156,7 @@
             <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
                 <div class="bg-white p-2">
                     <?php
-                        $result1 = $cases->getContent($conn,$_POST);
+                        $result1 = CaseModel::getContent($_POST['case_id']);
 
                         foreach ($result1 as $get_result1) {
 
