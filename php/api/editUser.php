@@ -1,8 +1,9 @@
 <?php
 
-require_once("{$_SERVER['DOCUMENT_ROOT']}/php/Class/User.php");
+require_once("{$_SERVER['DOCUMENT_ROOT']}/php/bootstrap.php");
 require_once("{$_SERVER['DOCUMENT_ROOT']}/php/Class/PasswordHash.php");
 include "{$_SERVER['DOCUMENT_ROOT']}/php/api/conn.php";
+use App\Models\UserModel;
 
 
 $passw = new PasswordHash(8,"TRUE");
@@ -11,32 +12,26 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
     if(!empty($_POST))
     {
-        $user = new User();
+        $update = [
+            'name' => $_POST['name'],
+            'state' => $_POST['state']
+        ];
+
         if (empty($_POST['password'])){
-
-            if($user->editUser($conn,$_POST)){
-
+            $result = UserModel::where('id', $_POST['id'])->update($update);
+            if($result){
                 echo "نجحة عملة تحيث البيانات.";
-
             }else{
-
                 echo "هناك مشكلة في عملية تحديث البيانات.";
             }
-
         }
         else{
             if (strlen($_POST['password']) > 8){
-
-                $password = $_POST['password'];
-
-                $password = $passw->HashPassword($password);
-
-                if($user->editPass($conn,$_POST,$password)){
-
+                $update['password'] = $passw->HashPassword($_POST['password']);
+                $result = UserModel::where('id', $_POST['id'])->update($update);
+                if($result){
                     echo "تم تحديث كلمة المرور بنجاح.";
-
                 }else{
-
                     echo "هناك خطء في عملية تحديث كلمة المرور.";
                 }
             }else{

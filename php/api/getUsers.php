@@ -2,12 +2,11 @@
 
 if (isset($_SESSION['loggedin']) and $_SESSION['loggedin'] == TRUE){
 
-    require_once("{$_SERVER['DOCUMENT_ROOT']}/php/Class/User.php");
+    require_once("{$_SERVER['DOCUMENT_ROOT']}/php/bootstrap.php");
     include "{$_SERVER['DOCUMENT_ROOT']}/php/api/conn.php";
+    use App\Models\UserModel;
 
-    $user = new User();
-
-    $result = $user->getUsers($conn);
+    $result = UserModel::all();
 
     foreach ($result as $user_){
         if($user_["state"] == 1){
