@@ -1,6 +1,6 @@
 <?php
 
-    require_once("{$_SERVER['DOCUMENT_ROOT']}\php\Class\Case_.php");
+    require_once("{$_SERVER['DOCUMENT_ROOT']}/php/Class/Case_.php");
     include "conn.php";
 
     recLog($conn,$_POST);

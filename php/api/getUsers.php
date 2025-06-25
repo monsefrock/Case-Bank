@@ -2,8 +2,8 @@
 
 if (isset($_SESSION['loggedin']) and $_SESSION['loggedin'] == TRUE){
 
-    require_once("{$_SERVER['DOCUMENT_ROOT']}\php\Class\User.php");
-    include "{$_SERVER['DOCUMENT_ROOT']}\php\api\conn.php";
+    require_once("{$_SERVER['DOCUMENT_ROOT']}/php/Class/User.php");
+    include "{$_SERVER['DOCUMENT_ROOT']}/php/api/conn.php";
 
     $user = new User();
 

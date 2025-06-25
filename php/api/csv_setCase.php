@@ -1,11 +1,11 @@
 <?php
-    require_once("{$_SERVER['DOCUMENT_ROOT']}\php\Class\Case_.php");
+    require_once("{$_SERVER['DOCUMENT_ROOT']}/php/Class/Case_.php");
     include "conn.php";
 
     $cases = new Case_();
 
 
-    $file_path = "{$_SERVER['DOCUMENT_ROOT']}\php\_files\data.csv";
+    $file_path = "{$_SERVER['DOCUMENT_ROOT']}/php/_files/data.csv";
     // Read a CSV file
     $handle = fopen($file_path, "r");
 

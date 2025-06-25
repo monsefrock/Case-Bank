@@ -14,9 +14,9 @@ else{
 
 if ($_SERVER["REQUEST_METHOD"] == "POST")
 {
-    require_once("{$_SERVER['DOCUMENT_ROOT']}\php\Class\User.php");
-    require_once("{$_SERVER['DOCUMENT_ROOT']}\php\Class\PasswordHash.php");
-    include "{$_SERVER['DOCUMENT_ROOT']}\php\api\conn.php";
+    require_once("{$_SERVER['DOCUMENT_ROOT']}/php/Class/User.php");
+    require_once("{$_SERVER['DOCUMENT_ROOT']}/php/Class/PasswordHash.php");
+    include "{$_SERVER['DOCUMENT_ROOT']}/php/api/conn.php";
 
 
     if(isset($_POST['password']) && isset($_POST['username']))
