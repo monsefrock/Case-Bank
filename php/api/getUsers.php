@@ -1,16 +1,13 @@
 <?php
+use App\Models\UserModel;
+require_once("{$_SERVER['DOCUMENT_ROOT']}/php/bootstrap.php");
 
 if (isset($_SESSION['loggedin']) and $_SESSION['loggedin'] == TRUE){
 
-    require_once("{$_SERVER['DOCUMENT_ROOT']}/php/Class/User.php");
-    include "{$_SERVER['DOCUMENT_ROOT']}/php/api/conn.php";
-
-    $user = new User();
-
-    $result = $user->getUsers($conn);
+    $result = UserModel::all();
 
     foreach ($result as $user_){
-        if($user_["state"] == 1){
+        if($user_->state == 1){
             $state = "مفعل";
         }else{
             $state = "غير مفعل";
@@ -23,17 +20,17 @@ if (isset($_SESSION['loggedin']) and $_SESSION['loggedin'] == TRUE){
                             </span>
                             <div class=" w-100 ps-2 pe-4 pt-1" >
                                 <p class="">
-                                    '.$user_["name"].'
+                                    '.$user_->name.'
                                 </p>
 
                                 <div  class="d-flex justify-content-between align-items-baseline">
                                     <p class="badge bg-orange text-end">
                                         '.$state.'
                                     </p>
-                                    <button data-id="'.$user_["id"].'" class="edit-btn btn-font btn btn-light btn-sm me-1">
+                                    <button data-id="'.$user_->id.'" class="edit-btn btn-font btn btn-light btn-sm me-1">
                                         <i class="bi bi-pencil-square"></i>
                                     </button>
-                                    <button data-id="'.$user_["id"].'" class="delete-btn btn-font btn btn-light btn-sm me-1">
+                                    <button data-id="'.$user_->id.'" class="delete-btn btn-font btn btn-light btn-sm me-1">
                                         <i class="bi bi-trash"></i>
                                     </button>
                                 </div>

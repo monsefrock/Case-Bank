@@ -1,23 +1,17 @@
 <?php
-require_once("{$_SERVER['DOCUMENT_ROOT']}/php/Class/User.php");
-include "{$_SERVER['DOCUMENT_ROOT']}/php/api/conn.php";
+use App\Models\UserModel;
+require_once("{$_SERVER['DOCUMENT_ROOT']}/php/bootstrap.php");
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
     if(!empty($_POST))
     {
-        $user = new User();
-
-        $resulte = $user->getUser_($conn, $_POST["user_id"]);
-        if (!empty($resulte)){
-
-            foreach ($resulte as $use){
-
-                $id = $use["id"];
-                $name = $use["name"];
-                $email = $use["email"];
-                $state = $use["state"];
-            }
+        $use = UserModel::find($_POST["user_id"]);
+        if ($use){
+            $id = $use->id;
+            $name = $use->name;
+            $email = $use->email;
+            $state = $use->state;
         }else{
             echo "<h1>فارغ</h1>";
         }
