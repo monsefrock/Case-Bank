@@ -1,6 +1,6 @@
 <?php
-    require_once("{$_SERVER['DOCUMENT_ROOT']}\php\Class\Case_.php");
-    require_once ("{$_SERVER['DOCUMENT_ROOT']}\php\api\conn.php");
+    require_once($_SERVER['DOCUMENT_ROOT'] . '/php/Class/Case_.php');
+    require_once($_SERVER['DOCUMENT_ROOT'] . '/php/api/conn.php');
 
     $cases = new Case_();
 ?>

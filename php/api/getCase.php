@@ -1,5 +1,5 @@
 <?php
-    require_once("{$_SERVER['DOCUMENT_ROOT']}\php\Class\Case_.php");
+    require_once($_SERVER['DOCUMENT_ROOT'] . '/php/Class/Case_.php');
     include "conn.php";
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
