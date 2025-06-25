@@ -1,6 +1,6 @@
 <?php
-require_once("{$_SERVER['DOCUMENT_ROOT']}\php\Class\User.php");
-include "{$_SERVER['DOCUMENT_ROOT']}\php\api\conn.php";
+require_once("{$_SERVER['DOCUMENT_ROOT']}/php/Class/User.php");
+include "{$_SERVER['DOCUMENT_ROOT']}/php/api/conn.php";
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
 

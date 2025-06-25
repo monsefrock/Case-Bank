@@ -7,8 +7,8 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
     exit('not loggedin');
 }
 
-require_once("{$_SERVER['DOCUMENT_ROOT']}\php\Class\Case_.php");
-require_once ("{$_SERVER['DOCUMENT_ROOT']}\php\api\conn.php");
+require_once("{$_SERVER['DOCUMENT_ROOT']}/php/Class/Case_.php");
+require_once ("{$_SERVER['DOCUMENT_ROOT']}/php/api/conn.php");
 
 ?>
 <!DOCTYPE html>
