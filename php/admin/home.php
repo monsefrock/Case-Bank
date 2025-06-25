@@ -1,7 +1,10 @@
 <?php
-if (!isset($_SESSION['loggedin']) and $_SESSION['loggedin'] != TRUE){
-    header("location: /login");
-    die("not loggedin");
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
+    header('Location: /login');
+    exit('not loggedin');
 }
 require_once("{$_SERVER['DOCUMENT_ROOT']}\php\Class\Case_.php");
 require_once ("{$_SERVER['DOCUMENT_ROOT']}\php\api\conn.php");

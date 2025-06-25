@@ -69,12 +69,14 @@
 
 
 
-        }else{
+        } else {
             header('Location: /error');
+            exit();
         }
 
-    }else{
+    } else {
         header('Location: /error');
+        exit();
     }
 
     function getFirst($conn, $type, $difficulty){

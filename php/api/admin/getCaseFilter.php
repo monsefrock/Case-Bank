@@ -131,6 +131,7 @@
             echo "<h3 class='text-center text-danger' dir='rtl'>لا توجد بيانات لعرضها.</h3>";
         }
 
-    }else{
+    } else {
         header('Location: /error');
+        exit();
     }
