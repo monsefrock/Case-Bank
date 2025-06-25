@@ -19,6 +19,7 @@
 
             echo "<h3 class='text-center text-danger' dir='rtl'>حدث خطء في إرسال البيانات</h3>";
         }
-    }else{
+    } else {
         header('Location: /error');
+        exit();
     }

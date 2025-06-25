@@ -5,9 +5,9 @@ if(!isset($_SESSION))
 }
 else{
 
-    if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)
-    {
-        header("location: /dashboard");
+    if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+        header('Location: /dashboard');
+        exit();
     }
 
 }
@@ -53,31 +53,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
                 $_SESSION['name'] = $name;
                 $_SESSION['user'] = $id;
 
-                header("location: /dashboard");
-                echo "Login successful.";
+                header('Location: /dashboard');
+                echo 'Login successful.';
+                exit();
 
             }
             else
             {
-                header("location: /login");
-                echo "Data input does not match.";
+                header('Location: /login');
+                echo 'Data input does not match.';
+                exit();
             }
         }
         else {
-            header("location: /login");
-            echo "Data input does not match.";
+            header('Location: /login');
+            echo 'Data input does not match.';
+            exit();
         }
 
     }
     else
     {
-        header("location: /login");
-        echo "No Data Send";
+        header('Location: /login');
+        echo 'No Data Send';
+        exit();
     }
 }
 else
 {
-    header("location: /404");
-    echo "404";
+    header('Location: /404');
+    echo '404';
+    exit();
 }
 ?>
