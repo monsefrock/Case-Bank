@@ -1,15 +1,11 @@
 <?php
-    require_once("{$_SERVER['DOCUMENT_ROOT']}/php/Class/Case_.php");
-    include "{$_SERVER['DOCUMENT_ROOT']}/php/api/conn.php";
+require_once("{$_SERVER['DOCUMENT_ROOT']}/php/bootstrap.php");
+use App\Models\CaseModel;
 
-    if($_SERVER['REQUEST_METHOD'] === 'POST'){
-
-        if(!empty($_POST))
-        {
-            $cases = new Case_();
-
-            $result = $cases->updatePoint($conn,$_POST);
-
-            echo $result;
-        }
+if($_SERVER['REQUEST_METHOD'] === 'POST'){
+    if(!empty($_POST))
+    {
+        $result = CaseModel::updatePoint($_POST);
+        echo $result;
     }
+}

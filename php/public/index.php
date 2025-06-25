@@ -1,8 +1,6 @@
 <?php
-    require_once("{$_SERVER['DOCUMENT_ROOT']}/php/Class/Case_.php");
-    require_once ("{$_SERVER['DOCUMENT_ROOT']}/php/api/conn.php");
-
-    $cases = new Case_();
+    require_once("{$_SERVER['DOCUMENT_ROOT']}/php/bootstrap.php");
+    use App\Models\CaseModel;
 ?>
 <!DOCTYPE html>
 <html lang="ar">
@@ -146,7 +144,7 @@
                 <select id="sub" name="sub" class="form-select group1" >
                     <option value="disabled">-</option>
                     <?php
-                    $result = $cases->getSubCat($conn);
+                    $result = CaseModel::getSubCat();
                     foreach ($result as $mainCat) {
                         echo '<option value="'.$mainCat['case_s_cat'].'">'.$mainCat['case_s_cat'].'</option>';
                     }
@@ -158,7 +156,7 @@
                 <select id="cat" name="cat" class="form-select group1" >
                     <option value="disabled">-</option>
                     <?php
-                    $result = $cases->getMainCat($conn);
+                    $result = CaseModel::getMainCat();
                     foreach ($result as $mainCat) {
                         echo '<option value="'.$mainCat['case_m_cat'].'">'.$mainCat['case_m_cat'].'</option>';
                     }
@@ -169,7 +167,7 @@
                 <label for="type" class="form-label">نوع القضية</label>
                 <select id="type" name="type" class="form-select">
                     <?php
-                    $result = $cases->getTypeCat($conn);
+                    $result = CaseModel::getTypeCat();
                     foreach ($result as $mainCat) {
                         echo '<option value="'.$mainCat['case_type'].'">'.$mainCat['case_type'].'</option>';
                     }
