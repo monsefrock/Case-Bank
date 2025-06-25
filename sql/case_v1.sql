@@ -212,6 +212,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `password` varchar(150) DEFAULT NULL,
   `profile_pic` varchar(300) NOT NULL,
   `type` int(11) NOT NULL,
+  `state` tinyint NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 COMMIT;
