@@ -1,8 +1,8 @@
 <?php
 
-require_once("{$_SERVER['DOCUMENT_ROOT']}/php/Class/User.php");
+use App\Models\UserModel;
+require_once("{$_SERVER['DOCUMENT_ROOT']}/php/bootstrap.php");
 require_once("{$_SERVER['DOCUMENT_ROOT']}/php/Class/PasswordHash.php");
-include "{$_SERVER['DOCUMENT_ROOT']}/php/api/conn.php";
 
 
     $passw = new PasswordHash(8,"TRUE");
@@ -11,18 +11,18 @@ include "{$_SERVER['DOCUMENT_ROOT']}/php/api/conn.php";
 
         if(!empty($_POST))
         {
-            $user = new User();
+            $password = $passw->HashPassword($_POST['password']);
 
-            $password = $_POST['password'];
+            $user = UserModel::create([
+                'name' => $_POST['name'],
+                'email' => $_POST['email'],
+                'password' => $password,
+                'state' => 1
+            ]);
 
-            $password = $passw->HashPassword($password);
-
-            if($user->setUser($conn,$_POST,$password)){
-
+            if($user){
                 echo "true";
-
             }else{
-
                 echo "false";
             }
         }
