@@ -6,9 +6,6 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
     header('Location: /login');
     exit('not loggedin');
 }
-require_once("{$_SERVER['DOCUMENT_ROOT']}/php/Class/Case_.php");
-require_once ("{$_SERVER['DOCUMENT_ROOT']}/php/api/conn.php");
-$cases = new Case_();
 ?>
 <!DOCTYPE html>
 <html lang="ar">
