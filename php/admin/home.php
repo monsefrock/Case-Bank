@@ -203,6 +203,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
             typr: type
         },function (data,status) {
 
+            console.log(data);
             $("#cases_get").html(data);
 
         })
