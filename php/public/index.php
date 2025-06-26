@@ -11,7 +11,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="../../assets/main.css">
 </head>
-<body class="bg-gray-100 font-[Tajawal]" dir="rtl">
+<body class="min-h-screen bg-gradient-to-br from-blue-50 to-purple-100 font-[Tajawal]" dir="rtl">
 <?php include __DIR__.'/components/header.php'; ?>
 <?php include __DIR__.'/components/toast.php'; ?>
 <div class="max-w-4xl mx-auto bg-white shadow rounded mt-6 p-6 space-y-6">
