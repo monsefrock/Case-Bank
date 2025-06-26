@@ -25,6 +25,9 @@
         <select id="sub" name="sub" class="w-full border rounded p-2 group1">
             <option value="disabled">-</option>
             <?php
+
+            use App\Models\CaseModel;
+
             $result = CaseModel::getSubCat();
             foreach ($result as $mainCat) {
                 echo '<option value="'.$mainCat['case_s_cat'].'">'.$mainCat['case_s_cat'].'</option>';
