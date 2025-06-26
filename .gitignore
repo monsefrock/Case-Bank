@@ -6,3 +6,7 @@ vendor/
 
 # Ignore IDE directories
 .idea/
+
+# Ignore compiled assets
+assets/dist/*
+!assets/dist/.gitkeep
