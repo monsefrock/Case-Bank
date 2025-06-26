@@ -28,8 +28,8 @@ if(!empty($result)){
             .'        <div class="show row" data-id="'.$mainCat["id"].'">'
             .'            <div class="col-12 p-2 pb-0 mb-1">'
             .'                <p class="text-justify">'
-            .'                    '.$mainCat["case_text"].'
-            .'                </p>'
+            .'                    '.$mainCat["case_text"].
+            '                </p>'
             .'                <div class="d-flex justify-content-end mt-2">'
             .'                    <span class="badge bg-primary bg-opacity-50 ms-3">'.$mainCat["case_m_cat"].'</span >'
             .'                    <span class="badge bg-primary bg-opacity-50">'.$mainCat["case_s_cat"].'</span>'
