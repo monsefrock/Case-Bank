@@ -106,32 +106,7 @@
                 $icon = 'bg-danger';
                 $css = '#bb2d3b';
             }
-            echo '<div class="col-12 sssd">
-                        <div class="row pt-3 pb-3 border-bottom">
-                            <div class="col-12 col-sm-3  d-flex justify-content-center align-self-center p-3">
-                                <div class="w-100 p-5 bg-primary '.$icon.' bg-opacity-25 rounded">
-                                    <i class="bi-chat-left-quote-fill d-flex justify-content-center icon" style="color: '.$css.' ;"></i>
-                                    <p class="text-center">دولاب القضايا</p>
-                                </div>
-                            </div>
-                            <div class="col-12 col-sm-9 p-3">
-                                <h2 id="text_copy">
-                                    '.$result['case_text'].'
-                                </h2>
-                                <div>
-                                    <a href="#" tabindex="-1" class="btn btn-sm btn-primary disabled placeholder mt-4" aria-hidden="true">'.$result['case_type'].'</a>
-                                    <a href="#" tabindex="-1" class="btn btn-sm btn-info disabled placeholder mt-4" aria-hidden="true">'.$result['case_m_cat'].'</a>
-                                    <a href="#" tabindex="-1" class="btn btn-sm btn-warning disabled placeholder mt-4" aria-hidden="true">'.$result['case_s_cat'].'</a>
-                                </div>
-                                <div class="mt-2">
-                                    <button id="liveToastBtn_mon" class="btn btn-sm btn-outline-primary" onclick="copyToClipboard('."'#text_copy'".')">
-                                        نسخ المقولة
-                                        <i class="bi bi-clipboard me-2"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                  </div>';
+            renderCase($result, $icon, $css);
         }
         else{
 
@@ -171,32 +146,7 @@
                 $icon = 'bg-danger';
                 $css = '#bb2d3b';
             }
-            echo '<div class="col-12">
-                        <div class="row pt-3 pb-3 border-bottom">
-                            <div class="col-12 col-sm-3  d-flex justify-content-center align-self-center p-3">
-                                <div class="w-100 p-5 bg-primary '.$icon.' bg-opacity-25 rounded">
-                                    <i class="bi-chat-left-quote-fill d-flex justify-content-center icon" style="color: '.$css.' ;"></i>
-                                    <p class="text-center">دولاب القضايا</p>
-                                </div>
-                            </div>
-                            <div class="col-12 col-sm-9 p-3">
-                                <h2 id="text_copy">
-                                    '.$result['case_text'].'
-                                </h2>
-                                <div>
-                                    <a href="#" tabindex="-1" class="btn btn-sm btn-primary disabled placeholder mt-4" aria-hidden="true">'.$result['case_type'].'</a>
-                                    <a href="#" tabindex="-1" class="btn btn-sm btn-info disabled placeholder mt-4" aria-hidden="true">'.$result['case_m_cat'].'</a>
-                                    <a href="#" tabindex="-1" class="btn btn-sm btn-warning disabled placeholder mt-4" aria-hidden="true">'.$result['case_s_cat'].'</a>
-                                </div>
-                                <div class="mt-2">
-                                    <button id="liveToastBtn_mon" class="btn btn-sm btn-outline-primary" onclick="copyToClipboard('."'#text_copy'".')">
-                                        نسخ المقولة
-                                        <i class="bi bi-clipboard me-2"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                  </div>';
+            renderCase($result, $icon, $css);
         }
         else{
 
@@ -237,32 +187,7 @@
                 $icon = 'bg-danger';
                 $css = '#bb2d3b';
             }
-            echo '<div class="col-12">
-                        <div class="row pt-3 pb-3 border-bottom">
-                            <div class="col-12 col-sm-3  d-flex justify-content-center align-self-center p-3">
-                                <div class="w-100 p-5 bg-primary '.$icon.' bg-opacity-25 rounded">
-                                    <i class="bi-chat-left-quote-fill d-flex justify-content-center icon" style="color: '.$css.' ;"></i>
-                                    <p class="text-center">دولاب القضايا</p>
-                                </div>
-                            </div>
-                            <div class="col-12 col-sm-9 p-3">
-                                <h2 id="text_copy">
-                                    '.$result['case_text'].'
-                                </h2>
-                                <div>
-                                    <a href="#" tabindex="-1" class="btn btn-sm btn-primary disabled placeholder mt-4" aria-hidden="true">'.$result['case_type'].'</a>
-                                    <a href="#" tabindex="-1" class="btn btn-sm btn-info disabled placeholder mt-4" aria-hidden="true">'.$result['case_m_cat'].'</a>
-                                    <a href="#" tabindex="-1" class="btn btn-sm btn-warning disabled placeholder mt-4" aria-hidden="true">'.$result['case_s_cat'].'</a>
-                                </div>
-                                <div class="mt-2">
-                                    <button id="liveToastBtn_mon" class="btn btn-sm btn-outline-primary" onclick="copyToClipboard('."'#text_copy'".')">
-                                        نسخ المقولة
-                                        <i class="bi bi-clipboard me-2"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                  </div>';
+            renderCase($result, $icon, $css);
         }
         else{
 
@@ -303,32 +228,7 @@
                 $icon = 'bg-danger';
                 $css = '#bb2d3b';
             }
-            echo '<div class="col-12">
-                        <div class="row pt-3 pb-3 border-bottom">
-                            <div class="col-12 col-sm-3  d-flex justify-content-center align-self-center p-3">
-                                <div class="w-100 p-5 bg-primary '.$icon.' bg-opacity-25 rounded">
-                                    <i class="bi-chat-left-quote-fill d-flex justify-content-center icon" style="color: '.$css.' ;"></i>
-                                    <p class="text-center">دولاب القضايا</p>
-                                </div>
-                            </div>
-                            <div class="col-12 col-sm-9 p-3">
-                                <h2 id="text_copy">
-                                    '.$result['case_text'].'
-                                </h2>
-                                <div>
-                                    <a href="#" tabindex="-1" class="btn btn-sm btn-primary disabled placeholder mt-4" aria-hidden="true">'.$result['case_type'].'</a>
-                                    <a href="#" tabindex="-1" class="btn btn-sm btn-info disabled placeholder mt-4" aria-hidden="true">'.$result['case_m_cat'].'</a>
-                                    <a href="#" tabindex="-1" class="btn btn-sm btn-warning disabled placeholder mt-4" aria-hidden="true">'.$result['case_s_cat'].'</a>
-                                </div>
-                                <div class="mt-2">
-                                    <button id="liveToastBtn_mon" class="btn btn-sm btn-outline-primary" onclick="copyToClipboard('."'#text_copy'".')">
-                                        نسخ المقولة
-                                        <i class="bi bi-clipboard me-2"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                  </div>';
+            renderCase($result, $icon, $css);
         }
         else{
 
@@ -340,5 +240,29 @@
 
         }
 
+    }
+
+    function renderCase($result, $icon, $css){
+        $html = <<<HTML
+<div class="glass p-6 space-y-4">
+    <div class="flex gap-4 items-start">
+        <div class="p-4 {$icon} bg-opacity-30 rounded-full">
+            <i class="bi-chat-left-quote-fill text-3xl" style="color: {$css};"></i>
+        </div>
+        <div class="flex-1">
+            <p id="text_copy" class="text-lg font-semibold mb-2">{$result['case_text']}</p>
+            <div class="flex flex-wrap gap-2">
+                <span class="px-2 py-1 bg-blue-600 text-white rounded text-sm">{$result['case_type']}</span>
+                <span class="px-2 py-1 bg-indigo-600 text-white rounded text-sm">{$result['case_m_cat']}</span>
+                <span class="px-2 py-1 bg-purple-600 text-white rounded text-sm">{$result['case_s_cat']}</span>
+            </div>
+            <button id="liveToastBtn_mon" class="mt-2 text-blue-600 hover:text-blue-800" onclick="copyToClipboard('#text_copy')">
+                نسخ المقولة <i class="bi bi-clipboard ms-1"></i>
+            </button>
+        </div>
+    </div>
+</div>
+HTML;
+        echo $html;
     }
 
