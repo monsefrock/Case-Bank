@@ -199,8 +199,8 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
 
         var type = $(this).data('text')
 
-        $.post("/admin/getCaseFilter",{
-            typr: type
+        $.post("/admin/filterCases",{
+            type: type
         },function (data,status) {
 
             console.log(data);
