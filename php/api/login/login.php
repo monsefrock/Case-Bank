@@ -18,7 +18,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 {
     require_once("{$_SERVER['DOCUMENT_ROOT']}/php/bootstrap.php");
     require_once("{$_SERVER['DOCUMENT_ROOT']}/php/Class/PasswordHash.php");
-    include "{$_SERVER['DOCUMENT_ROOT']}/php/api/conn.php";
 
 
     if(isset($_POST['password']) && isset($_POST['username']))
